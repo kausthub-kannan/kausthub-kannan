@@ -16,15 +16,15 @@
 
 <div> As a skilled Machine Learning practitioner, I have significant experience in developing and deploying various models, including Convolutional Neural Networks, Natural Language Processing, and Transfer Learning Models. Through utilizing tools such as Tensorflow libraries, Scikit-learn, Pandas, and other data visualization and neural network building tools, I have developed a strong skill set in Machine Learning. My expertise in mathematical concepts and practical experience in deploying models allow me to create highly efficient and effective solutions that meet the needs of businesses. </div>
 
-#### Tech Stack
-<div style="display: flex; justify-content: space-between;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg" style="width: 50px;">   
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg" style="width: 50px;>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/QiskitBlocks_Icon.png" style="width: 60px">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" style="width: 100px">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Mongodb-icon.svg" style="width: 60px">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg" style="width: 60px">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg" style="width: 70px">
+<h3>Tech Stack<h3>
+<div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg" style="width: 50px;" hspace="10" /> 
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg" style="width: 50px;" hspace="10">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/QiskitBlocks_Icon.png" style="width: 60px"  hspace="10" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" style="width: 100px"  hspace="10" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Mongodb-icon.svg" style="width: 60px"  hspace="10" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg" style="width: 60px"  hspace="10" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg" style="width: 70px"  hspace="10" />
 </div>
 
 
