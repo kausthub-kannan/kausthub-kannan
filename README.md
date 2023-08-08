@@ -12,6 +12,9 @@
  <a href="https://www.kaggle.com/kausthubkannan" target="_blank">
   <img src="https://img.shields.io/badge/Kaggle-0077B5?style=for-the-badge&logoColor=white" alt="alsiam"/>
  </a>
+  <a href="https://linktr.ee/kausthub_kannan" target="_blank">
+  <img src="https://img.shields.io/badge/Linktree-A2FF86?style=for-the-badge&logoColor=white" alt="alsiam"/>
+ </a>
 
 
 <div> As a skilled Machine Learning practitioner, I have significant experience in developing and deploying various models, including Convolutional Neural Networks, Natural Language Processing, and Transfer Learning Models. Through utilizing tools such as Tensorflow libraries, Scikit-learn, Pandas, and other data visualization and neural network building tools, I have developed a strong skill set in Machine Learning. My expertise in mathematical concepts and practical experience in deploying models allow me to create highly efficient and effective solutions that meet the needs of businesses. </div>
