@@ -19,6 +19,10 @@
 
 <div> As a skilled Machine Learning practitioner, I have significant experience in developing and deploying various models, including Convolutional Neural Networks, Natural Language Processing, and Transfer Learning Models. Through utilizing tools such as Tensorflow libraries, Scikit-learn, Pandas, and other data visualization and neural network building tools, I have developed a strong skill set in Machine Learning. My expertise in mathematical concepts and practical experience in deploying models allow me to create highly efficient and effective solutions that meet the needs of businesses. </div>
 
+<br />
+
+<!--![Kausthub's GitHub stats](https://github-readme-stats.vercel.app/api?username=kausthub-kannan)-->
+
 <h3>Tech Stack<h3>
 <div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg" style="width: 50px;" hspace="10" /> 
