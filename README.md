@@ -21,7 +21,7 @@
 
 <br />
 
-<!--![Kausthub's GitHub stats](https://github-readme-stats.vercel.app/api?username=kausthub-kannan)-->
+![Kausthub's GitHub stats](https://github-readme-stats.vercel.app/api?username=kausthub-kannan)
 
 <h3>Tech Stack<h3>
 <div>
