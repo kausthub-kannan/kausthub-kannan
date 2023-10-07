@@ -1,27 +1,36 @@
-# Kausthub Kannan
+<h1> Kausthub Kannan </h1>
 <a href="https://portfoliokk007.netlify.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Neural Network Dev-fe2120?style=for-the-badge&logoColor=white" alt="alsiam" />
+  <img src="https://img.shields.io/badge/Neural Network Dev-A2FF86?style=for-the-badge&logoColor=white" alt="portfolio"/>
 </a> <br><br>
 
 <a href="https://www.linkedin.com/in/kausthub-kannan-dev007kk/" target="_blank">
-  <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="alsiam"/>
+  <img src="https://img.shields.io/badge/LinkedIn-A2FF86?style=for-the-badge&logoColor=white" alt="linkedin"/>
  </a>  
 <!--   <a href="https://instagram.com/alsiam.dev" target="_blank">
   <img src="https://img.shields.io/badge/Instagram-fe4164?style=for-the-badge&logo=instagram&logoColor=white" alt="alsiam" />
  </a>  -->
  <a href="https://www.kaggle.com/kausthubkannan" target="_blank">
-  <img src="https://img.shields.io/badge/Kaggle-0077B5?style=for-the-badge&logoColor=white" alt="alsiam"/>
+  <img src="https://img.shields.io/badge/Kaggle-A2FF86?style=for-the-badge&logoColor=white" alt="kaggle"/>
  </a>
   <a href="https://linktr.ee/kausthub_kannan" target="_blank">
-  <img src="https://img.shields.io/badge/Linktree-A2FF86?style=for-the-badge&logoColor=white" alt="alsiam"/>
- </a>
+  <img src="https://img.shields.io/badge/Linktree-A2FF86?style=for-the-badge&logoColor=white" alt="linktree"/>
+ </a>  
 
+<p> </p>
 
-<div> As a skilled Machine Learning practitioner, I have significant experience in developing and deploying various models, including Convolutional Neural Networks, Natural Language Processing, and Transfer Learning Models. Through utilizing tools such as Tensorflow libraries, Scikit-learn, Pandas, and other data visualization and neural network building tools, I have developed a strong skill set in Machine Learning. My expertise in mathematical concepts and practical experience in deploying models allow me to create highly efficient and effective solutions that meet the needs of businesses. </div>
+<ul>
+  
+<li> 🤖 Love working on Computer Vision Projects.
+  
+<li> 👽 Always ready to work on GANs and RL projects.
+  
+<li> 👾 Love working with Embedded Systems and Simulations.  
+
+</ul>
 
 <br />
 
-![Kausthub's GitHub stats](https://github-readme-stats.vercel.app/api?username=kausthub-kannan)
+![GitHub Stats Card](https://github-readme-stats.vercel.app/api?username=kausthub-kannan&count_private=true&theme=merko&show_icons=true&count_private=true&sanitize=true)
 
 <h3>Tech Stack<h3>
 <div>
