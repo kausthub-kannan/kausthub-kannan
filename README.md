@@ -1,36 +1,37 @@
+<div align="center"">
 <h1> Kausthub Kannan </h1>
 <a href="https://portfoliokk007.netlify.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Neural Network Dev-A2FF86?style=for-the-badge&logoColor=white" alt="portfolio"/>
+  <img src="https://img.shields.io/badge/Neural Network Dev-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
 </a> <br><br>
 
 <a href="https://www.linkedin.com/in/kausthub-kannan-dev007kk/" target="_blank">
-  <img src="https://img.shields.io/badge/LinkedIn-A2FF86?style=for-the-badge&logoColor=white" alt="linkedin"/>
+  <img src="https://img.shields.io/badge/LinkedIn-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
  </a>  
 <!--   <a href="https://instagram.com/alsiam.dev" target="_blank">
   <img src="https://img.shields.io/badge/Instagram-fe4164?style=for-the-badge&logo=instagram&logoColor=white" alt="alsiam" />
  </a>  -->
  <a href="https://www.kaggle.com/kausthubkannan" target="_blank">
-  <img src="https://img.shields.io/badge/Kaggle-A2FF86?style=for-the-badge&logoColor=white" alt="kaggle"/>
+  <img src="https://img.shields.io/badge/Kaggle-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
  </a>
   <a href="https://linktr.ee/kausthub_kannan" target="_blank">
-  <img src="https://img.shields.io/badge/Linktree-A2FF86?style=for-the-badge&logoColor=white" alt="linktree"/>
+  <img src="https://img.shields.io/badge/Linktree-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
  </a>  
 
 <p> </p>
 
 <ul>
   
-<li> 🤖 Love working on Computer Vision Projects.
+🤖 Love working on Computer Vision Projects.
   
-<li> 👽 Always ready to work on GANs and RL projects.
+👽 Always ready to work on GANs and RL projects.
   
-<li> 👾 Love working with Embedded Systems and Simulations.  
+👾 Love working with Embedded Systems and Simulations.  
 
 </ul>
 
 <br />
 
-![GitHub Stats Card](https://github-readme-stats.vercel.app/api?username=kausthub-kannan&count_private=true&theme=merko&show_icons=true&count_private=true&sanitize=true)
+![GitHub Stats Card](https://github-readme-stats.vercel.app/api?username=kausthub-kannan&count_private=true&theme=great-gatsby&show_icons=true&count_private=true&sanitize=true)
 
 <h3>Tech Stack<h3>
 <div>
@@ -42,6 +43,6 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg" style="width: 60px"  hspace="10" />
   <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg" style="width: 70px"  hspace="10" />
 </div>
-
+</div>
 
 
