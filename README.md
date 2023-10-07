@@ -1,5 +1,6 @@
 <div align="center"">
 <h1> Kausthub Kannan </h1>
+<h2>GenAI | Computer Vision | RL</h2>
 <a href="https://portfoliokk007.netlify.app/" target="_blank">
   <img src="https://img.shields.io/badge/Neural Network Dev-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
 </a> <br><br>
