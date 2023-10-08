@@ -2,7 +2,7 @@
 <h1> Kausthub Kannan </h1>
 <h3> GenAI | Computer Vision | RL </h3>  <br />
 <a href="https://portfoliokk007.netlify.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Neural Network Dev-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
+  <img src="https://img.shields.io/badge/Deep Learning Dev-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
 </a> <br><br>
 
 <a href="https://www.linkedin.com/in/kausthub-kannan-dev007kk/" target="_blank">
