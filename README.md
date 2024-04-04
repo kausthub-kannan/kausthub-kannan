@@ -1,6 +1,6 @@
 <div align="center"">
 <h1> Kausthub Kannan </h1>
-<h3> GenAI | Computer Vision | RL </h3>  <br />
+<h3> GenAI | Computer Vision | LVMs and LLMs </h3>  <br />
 <a href="https://portfoliokk007.netlify.app/" target="_blank">
   <img src="https://img.shields.io/badge/Deep Learning Dev-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
 </a> <br><br>
@@ -24,9 +24,7 @@
   
 🤖 Love working on Computer Vision Projects.
   
-👽 Always ready to work on GANs and RL projects.
-  
-👾 Love working with Embedded Systems and Simulations.  
+👽 Always ready to work on GANs and LLM projects. 
 
 </ul>
 
