@@ -32,8 +32,6 @@
 
 ![GitHub Stats Card](https://github-readme-stats.vercel.app/api?username=kausthub-kannan&count_private=true&theme=great-gatsby&show_icons=true&count_private=true&sanitize=true)  
 
-![An image of @kausthubkannan's Holopin badges, which is a link to view their full Holopin profile](https://holopin.me/kausthubkannan)
-
 <h3>Tech Stack<h3>
 <div>
   <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg" style="width: 50px;" hspace="10" /> 
