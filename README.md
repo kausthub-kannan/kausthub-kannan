@@ -1,47 +1,28 @@
-<div align="center"">
-<h1> Kausthub Kannan </h1>
-<h3> GenAI | Computer Vision | LVMs and LLMs </h3>  <br />
-<a href="https://portfoliokk007.netlify.app/" target="_blank">
-  <img src="https://img.shields.io/badge/Deep Learning Dev-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
-</a> <br><br>
-
-<a href="https://www.linkedin.com/in/kausthub-kannan-dev007kk/" target="_blank">
-  <img src="https://img.shields.io/badge/LinkedIn-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
- </a>  
-<!--   <a href="https://instagram.com/alsiam.dev" target="_blank">
-  <img src="https://img.shields.io/badge/Instagram-fe4164?style=for-the-badge&logo=instagram&logoColor=white" alt="alsiam" />
- </a>  -->
- <a href="https://www.kaggle.com/kausthubkannan" target="_blank">
-  <img src="https://img.shields.io/badge/Kaggle-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
- </a>
-  <a href="https://linktr.ee/kausthub_kannan" target="_blank">
-  <img src="https://img.shields.io/badge/Linktree-FFCD4B?style=for-the-badge&logoColor=white" alt="linktree"/>
- </a>  
-
-<p> </p>
-
-<ul>
-  
-🤖 Love working on Computer Vision Projects.
-  
-👽 Always ready to work on GANs and LLM projects. 
-
-</ul>
-
-<br />
-
-![GitHub Stats Card](https://github-readme-stats.vercel.app/api?username=kausthub-kannan&count_private=true&theme=great-gatsby&show_icons=true&count_private=true&sanitize=true)  
-
-<h3>Tech Stack<h3>
-<div>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/PyTorch_logo_icon.svg" style="width: 50px;" hspace="10" /> 
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg" style="width: 50px;" hspace="10">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/QiskitBlocks_Icon.png" style="width: 60px"  hspace="10" />
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" style="width: 100px"  hspace="10" />
-  <img src="https://upload.wikimedia.org/wikipedia/commons/d/dc/Mongodb-icon.svg" style="width: 60px"  hspace="10" />
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/React.svg" style="width: 60px"  hspace="10" />
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Kali-dragon-icon.svg" style="width: 70px"  hspace="10" />
-</div>
+<div align="center">
+  <img src="header.jpg" alt="header" width="75%" />
 </div>
 
+<div align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=A78BFA&center=true&vCenter=true&width=520&lines=Always+into+something+weird+and+fun+%F0%9F%9B%B8;Develop+for+the+joy+%E2%9C%A8;ML+%C2%B7+Agents+%C2%B7+Training+%26+Inference+%F0%9F%A7%A0;Cloud+%E2%98%81%EF%B8%8F+to+embedded+%F0%9F%94%8C" alt="typing intro" />
+</div>
 
+<img align="right" width="300" src="https://skillicons.dev/icons?i=python,go,ts,react,fastapi,postgres,aws,pytorch,tensorflow,opencv,docker,kubernetes,terraform,linux,bash,obsidian&perline=4" alt="Tech stack" />
+
+### 👾 About me
+
+Always tinkering with something weird and fun (lmao). I build things for the joy of building.
+
+Full-stack by flexibility, not by choice of sanity.
+
+Mostly into **ML and Agents**, from training to inference, across cloud and embedded devices.
+
+But honestly, if it’s fun to build, I’m in :)
+
+### 🔌 Wanna connect?
+
+<a href="https://discord.com/users/760394668143280138"><img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" /></a>
+<a href="mailto:kausthubkannan961@gmail.com"><img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail" /></a>
+<a href="https://www.linkedin.com/in/kausthub-kannan"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+<a href="https://x.com/kausthub_kannan"><img src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter" /></a>
+
+<br clear="right" />
