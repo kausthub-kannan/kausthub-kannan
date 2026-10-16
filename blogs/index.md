@@ -1,5 +1,3 @@
-<!-- MkDocs homepage for the site. Edit this file to change the landing page. -->
-
 # Kausthub Kannan
 
 Always tinkering with something weird and fun. I build things for the joy of building — mostly **ML and Agents**, from training to inference, across cloud and embedded devices.

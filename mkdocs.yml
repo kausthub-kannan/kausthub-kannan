@@ -12,6 +12,11 @@ docs_dir: blogs
 
 theme:
   name: material
+  # Single dark scheme so the navy background + white text always apply.
+  palette:
+    - scheme: slate
+      primary: black
+      accent: red
   features:
     - navigation.sections
     - navigation.expand
@@ -28,6 +33,9 @@ markdown_extensions:
       permalink: true
   - pymdownx.superfences
   - pymdownx.highlight
+
+extra_css:
+  - assets/stylesheets/extra.css
 
 plugins:
   - search

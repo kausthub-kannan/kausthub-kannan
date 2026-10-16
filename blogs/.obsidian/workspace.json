@@ -191,6 +191,8 @@
   },
   "active": "099be6f7003117db",
   "lastOpenFiles": [
+    "assets/stylesheets/extra.css",
+    "assets/stylesheets",
     "Lore/test.md",
     "Lore",
     "Blogs/Agentic AI/AWS AgentCore.md",
@@ -209,7 +211,6 @@
     "assets/excalidraw/Supervisor Agent.excalidraw",
     "assets/excalidraw/ReAct.excalidraw",
     "assets/excalidraw/Brahma Sutra.excalidraw",
-    "scripts/sync_excalidraw.py",
     "assets/excalidraw/Brahma Sutra.excalidraw.md",
     "assets/excalidraw/Supervisor Agent.excalidraw.md",
     "assets/Excalidraw/Swarm Agent.excalidraw.md",
@@ -225,7 +226,6 @@
     "Blogs/AWS MLA Certification/MLOps.md",
     "Blogs/AWS MLA Certification/ML Best Practices.md",
     "Blogs/AWS MLA Certification/IAM.md",
-    "Blogs/AWS MLA Certification/Generative AI Model Fundamentals.md",
-    "Blogs/AWS MLA Certification/Data Transformation, Integrity and Feature Engineering.md"
+    "Blogs/AWS MLA Certification/Generative AI Model Fundamentals.md"
   ]
 }

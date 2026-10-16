@@ -1,0 +1,26 @@
+/* Site theme: deep navy background (#010736), signal red (#D9361E)
+ * accents/headers, white body text. Applies to the slate (dark) scheme,
+ * which is the only scheme enabled in mkdocs.yml. */
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #010736;
+  --md-default-fg-color: #ffffff;
+  --md-typeset-color: #ffffff;
+
+  --md-primary-fg-color: #d9361e;
+  --md-primary-fg-color--dark: #a82815;
+  --md-primary-bg-color: #ffffff;
+
+  --md-accent-fg-color: #d9361e;
+  --md-typeset-a-color: #d9361e;
+
+  --md-code-bg-color: #0b1440;
+  --md-code-fg-color: #ffffff;
+}
+
+/* Section headers in signal red */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  color: #d9361e;
+}
