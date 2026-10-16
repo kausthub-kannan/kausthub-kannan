@@ -1,6 +1,6 @@
 # MkDocs configuration. The site is sourced ONLY from blogs/ (docs_dir) —
 # nothing else in this repo (root README, header.jpg, PDFs, …) is published.
-site_name: Kausthub Kannan
+site_name: KK's Days
 site_author: Kausthub Kannan
 site_description: Personal website and blogs — ML, Agents, System Design.
 # Project-pages URL for kausthub-kannan/kausthub-kannan.
@@ -12,6 +12,8 @@ docs_dir: blogs
 
 theme:
   name: material
+  logo: assets/dp.jpg
+  favicon: assets/dp.jpg
   # Single dark scheme so the navy background + white text always apply.
   palette:
     - scheme: slate
@@ -19,7 +21,6 @@ theme:
       accent: red
   features:
     - navigation.sections
-    - navigation.expand
     - search.suggest
     - search.highlight
     - content.code.copy
