@@ -1,0 +1,11 @@
+# Automatic navigation: everything under blogs/ appears in the nav on its own.
+# Add/delete/rename pages and sections freely — only index.md (the homepage)
+# is named explicitly, everything else (including future Art/, Lore/, …)
+# is picked up via append_unmatched. Asset and helper folders stay hidden.
+append_unmatched: true
+ignore:
+  - assets/
+  - scripts/
+nav:
+  - Home: index.md
+  - Blogs

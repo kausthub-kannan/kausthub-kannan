@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "index"
             }
           }
         ]
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "index.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "index.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -191,9 +191,15 @@
   },
   "active": "099be6f7003117db",
   "lastOpenFiles": [
+    "Lore/test.md",
+    "Lore",
+    "Blogs/Agentic AI/AWS AgentCore.md",
+    "Art/test.md",
+    "Art",
+    "README.md",
+    "index.md",
     "requirements.txt",
     "mkdocs.yml",
-    "index.md",
     "assets/excalidraw/Swarm Agent.excalidraw",
     "Blogs/System Design/index.md",
     "assets/excalidraw/Swarm Agent.excalidraw.md",
@@ -204,17 +210,13 @@
     "assets/excalidraw/ReAct.excalidraw",
     "assets/excalidraw/Brahma Sutra.excalidraw",
     "scripts/sync_excalidraw.py",
-    "scripts",
     "assets/excalidraw/Brahma Sutra.excalidraw.md",
-    "README.md",
     "assets/excalidraw/Supervisor Agent.excalidraw.md",
-    "assets/excalidraw",
     "assets/Excalidraw/Swarm Agent.excalidraw.md",
     "assets/Excalidraw/Supervisor Agent.excalidraw.md",
     "assets/Excalidraw/Simple Agent flow.excalidraw.md",
     "assets/Excalidraw/ReAct.excalidraw.md",
     "assets/Excalidraw/Brahma Sutra.excalidraw.md",
-    "assets/Excalidraw",
     "Blogs/Rust.md",
     "Blogs/AWS MLA Certification/SageMaker Built-In Algorithms.md",
     "Blogs/AWS MLA Certification/Practice Questions.md",
@@ -224,8 +226,6 @@
     "Blogs/AWS MLA Certification/ML Best Practices.md",
     "Blogs/AWS MLA Certification/IAM.md",
     "Blogs/AWS MLA Certification/Generative AI Model Fundamentals.md",
-    "Blogs/AWS MLA Certification/Data Transformation, Integrity and Feature Engineering.md",
-    "Blogs/AWS MLA Certification/Data Ingestion and Storage.md",
-    "Blogs/AWS MLA Certification/Building Generative AI Applications.md"
+    "Blogs/AWS MLA Certification/Data Transformation, Integrity and Feature Engineering.md"
   ]
 }

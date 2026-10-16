@@ -2,7 +2,7 @@
 # nothing else in this repo (root README, header.jpg, PDFs, …) is published.
 site_name: Kausthub Kannan
 site_author: Kausthub Kannan
-site_description: Personal website and blogs — ML, Agents, Rust, System Design.
+site_description: Personal website and blogs — ML, Agents, System Design.
 # Project-pages URL for kausthub-kannan/kausthub-kannan.
 # If you switch to a custom domain or a *.github.io user site, update this.
 site_url: https://kausthub-kannan.github.io/kausthub-kannan/
@@ -31,39 +31,16 @@ markdown_extensions:
 
 plugins:
   - search
+  - awesome-nav
   - excalidraw
   - glightbox
 
-# Keep Obsidian internals, drawing sources, helper scripts and the vault
-# README (mirrored into index.md, which is the actual homepage) out of the site.
+# Keep Obsidian internals, drawing sources and helper scripts out of the site.
 # Paths are relative to docs_dir (blogs/).
 exclude_docs: |
   .obsidian/*
   assets/excalidraw/*.excalidraw.md
   scripts/*
-  README.md
 
-nav:
-  - Home: index.md
-  - Blogs:
-      - Rust: Blogs/Rust.md
-      - Agentic AI:
-          - Deep Agents: Blogs/Agentic AI/Deep Agents.md
-          - LangGraph: Blogs/Agentic AI/LangGraph.md
-          - Agent Memory: Blogs/Agentic AI/Agent Memory.md
-          - Agents In Production: Blogs/Agentic AI/Agents In Production.md
-          - AWS AgentCore: Blogs/Agentic AI/AWS AgentCore.md
-      - AWS MLA Certification:
-          - ML Best Practices: Blogs/AWS MLA Certification/ML Best Practices.md
-          - Data Ingestion and Storage: Blogs/AWS MLA Certification/Data Ingestion and Storage.md
-          - Data Transformation, Integrity and Feature Engineering: Blogs/AWS MLA Certification/Data Transformation, Integrity and Feature Engineering.md
-          - Model Training, Tuning and Evaluation: Blogs/AWS MLA Certification/Model Training, Tuning and Evaluation.md
-          - SageMaker Built-In Algorithms: Blogs/AWS MLA Certification/SageMaker Built-In Algorithms.md
-          - AWS Managed AI Services: Blogs/AWS MLA Certification/AWS Managed AI Services.md
-          - Building Generative AI Applications: Blogs/AWS MLA Certification/Building Generative AI Applications.md
-          - Generative AI Model Fundamentals: Blogs/AWS MLA Certification/Generative AI Model Fundamentals.md
-          - IAM: Blogs/AWS MLA Certification/IAM.md
-          - Management and Governance: Blogs/AWS MLA Certification/Management and Governance.md
-          - MLOps: Blogs/AWS MLA Certification/MLOps.md
-          - Practice Questions: Blogs/AWS MLA Certification/Practice Questions.md
-      - System Design: Blogs/System Design/index.md
+# No nav: section here — navigation is generated automatically from blogs/
+# via blogs/.nav.yml (awesome-nav). Never edit nav manually.
