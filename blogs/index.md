@@ -31,6 +31,7 @@ Got a cool project idea? Something weird, experimental, or ridiculously ambitiou
 
 Here are some fun projects of mine (click to navigate to repo)...
 
+### Projects
 <p>
 <a href="https://github.com/kausthub-kannan/poneglyph"><img src="https://githubcard.com/kausthub-kannan/poneglyph.svg?d=dsil4vYT8bbY" width="48%" alt="poneglyph" /></a>
 <a href="https://github.com/kausthub-kannan/dropex"><img src="https://githubcard.com/kausthub-kannan/dropex.svg?d=dsil4vYT8bbY" width="48%" alt="dropex" /></a>
