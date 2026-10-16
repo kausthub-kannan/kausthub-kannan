@@ -1,0 +1,17 @@
+<!-- MkDocs homepage. Source of truth is README.md next to this file; keep the two in sync. -->
+
+# Kausthub Kannan
+
+Always tinkering with something weird and fun. I build things for the joy of building — mostly **ML and Agents**, from training to inference, across cloud and embedded devices.
+
+This site is my collection of notes and blogs.
+
+## Sections
+
+- [Blogs](<Blogs/Rust.md>) — technical notes on Agentic AI, AWS ML certification prep, Rust, and System Design.
+  - [Agentic AI](<Blogs/Agentic AI/Deep Agents.md>): Deep Agents, LangGraph, Agent Memory, Agents in Production, AWS AgentCore
+  - [AWS MLA Certification](<Blogs/AWS MLA Certification/ML Best Practices.md>): certification study notes and practice questions
+  - [Rust](<Blogs/Rust.md>): Rust notes with an ML orientation
+  - [System Design](<Blogs/System Design/index.md>): Alex Xu volumes 1 & 2
+
+*More sections (Art, Lore, …) coming soon — each new folder next to `Blogs/` becomes a section.*
