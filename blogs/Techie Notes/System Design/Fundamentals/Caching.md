@@ -50,3 +50,10 @@ Cache penetration happens when requests ask for data that does not exist, such a
 
 ### Distributed Caching
 A single cache server is limited in memory and is also a single point of failure, so large systems use a distributed cache, where the data is split across many cache servers, a technique called sharding or partitioning. The client or a proxy decides which server holds a key, usually using consistent hashing, which makes sure that adding or removing a server only moves a small part of the keys and not all of them. Replicas of each shard are kept so that the cache survives a server failure, and Redis Cluster is a common example of this setup.
+
+## Concept of Write-through and Write-back
+In caching, when data is updated in the cache, the main memory or underlying database can also be updated immediately. This is called write-through caching. It priorities data consistency and durability but can increase write latency.
+
+In write-back caching, updates are made to the cache first and propagated to the underlying storage asynchronously, prioritising lower write latency. However, if the cache fails before the updates are persisted, data may be lost.
+
+A dirty bit identifies whether a cache entry has been modified but not yet written to the underlying storage. It helps determine which entries need to be flushed during write-back.

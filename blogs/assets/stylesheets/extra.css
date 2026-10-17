@@ -63,3 +63,25 @@
   width: 2rem;
   object-fit: cover;
 }
+
+/* Excalidraw diagrams (mkdocs-excalidraw).
+ * The plugin renders each drawing as <excalidraw-renderer><div><img></div></excalidraw-renderer>.
+ * That tag is an unknown element, so it defaults to display:inline — a tall
+ * image then overflows its line box and visually overlaps the next diagram.
+ * Block display + a width cap keeps every diagram in its own row and stops
+ * wide drawings from overflowing the content column. */
+.md-typeset excalidraw-renderer {
+  display: block;
+  margin: 1.2rem 0;
+}
+
+.md-typeset excalidraw-renderer div {
+  display: block;
+}
+
+.md-typeset excalidraw-renderer img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}

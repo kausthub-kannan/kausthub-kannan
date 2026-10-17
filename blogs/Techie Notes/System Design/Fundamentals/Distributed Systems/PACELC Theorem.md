@@ -31,7 +31,9 @@ PACELC covers both situations by giving each design two labels, one for the part
 |Save latency for the customer|About 2 ms|About 300 ms|
 |Can the warehouse read an old address|Yes, for a short window|No|
 |Experience during a link failure|US customers keep working, conflicts resolved afterwards|US customers see errors until the link is back|
+
 What the company chooses is based on the need - as said system design never as the perfect answer
+
 
 ## Reading the PACELC Notation
 A system is described with two choices, one for each situation, written as a pair such as PA/EL.
@@ -51,6 +53,7 @@ A system is described with two choices, one for each situation, written as a pai
 |PA/EC|Stays available|Favors consistency|MongoDB is often cited here, depending on its settings|Systems that want correct data normally but prefer answering over failing during a partition|
 |PC/EL|Protects consistency|Favors low latency|Yahoo PNUTS|A less common combination, where normal reads are fast but a partition makes the system strict|
 |PC/EC|Protects consistency|Favors consistency|Google Spanner, HBase, VoltDB, ZooKeeper, etcd|Banking, payments, inventory, coordination and configuration data|
+
 ## Real World Examples
 Cassandra and DynamoDB are PA/EL by default. By default, they accept writes quickly on a node close by and replicate in the background, so they are very fast and stay available even during failures, and the price is that a read may briefly return older data.
 

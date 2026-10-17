@@ -1,4 +1,4 @@
-xGraph defines a structure of agentic or multi-agentic flow. These can be visualised as workflows quite similar to AWS Step function but focused on LLM-based decision making and more flexible.
+Graph defines a structure of agentic or multi-agentic flow. These can be visualised as workflows quite similar to AWS Step function but focused on LLM-based decision making and more flexible.
 
 **Nodes & Edges**:
 Agentic  Workflows consists of two main components; Nodes and Edges. Nodes represent certain action to be executed. These can be LLM calls, Human-In-The-Loop (HITL), Tool Call and others. LangGraph defines the start of a graph as a **Start Node** and the terminal node as **End**. On code Nodes are python functions.
@@ -43,7 +43,7 @@ With increased number of invokes and runs, memory size increases and becomes not
 **ReAct**:
 It is a pattern where the output of a model or tool is fed back into the model as input — for example, the output of a tool node is returned to the calling node for further reasoning. **Re**ason (interpret the output and decide the next step) + **Act** (execute and observe the result). This pattern is particularly useful when the same or similar tools are called repeatedly, such as tools that interact with a database.
 
-![ReAct](../../assets/excalidraw/ReAct.excalidraw){ width="400" }
+![ReAct](../../assets/excalidraw/ReAct.excalidraw){ width="100" }
 
 **Human-In-The-Loop (HITL)**:
 Human-in-the-Loop (HITL) ensures that major decisions made by models or agents are verified and approved before proceeding to the next node or agent, reducing security risks and preventing cascading failures.

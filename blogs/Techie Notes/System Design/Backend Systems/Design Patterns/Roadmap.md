@@ -1,0 +1,25 @@
+- [ ] URL shortener
+- [ ] Rate limiter
+- [ ] Key-value store / distributed cache
+- [ ] News feed / Twitter timeline
+- [ ] Chat system / WhatsApp
+- [ ] Notification system
+- [ ] Search autocomplete / typeahead
+- [ ] Video streaming / file storage
+- [ ] Payment system or ride-sharing
+- [ ] Scaling reads and writes
+- [ ] Real-time updates
+- [ ] Contention and double-booking prevention
+- [ ] Large file uploads and delivery
+- [ ] Long-running asynchronous tasks
+- [ ] Multi-step workflows and the saga pattern
+- [ ] Reliable event publishing: outbox pattern and CDC
+- [ ] Multi-region architecture and failover
+- [ ] Ticket booking / Ticketmaster
+- [ ] Top-K, leaderboards and trending systems
+- [ ] Distributed job scheduler
+- [ ] Web crawler
+- [ ] Metrics, logging and monitoring system
+- [ ] Collaborative editor / Google Docs
+- [ ] Distributed lock service / unique ID generator
+- [ ] E-commerce checkout and inventory
