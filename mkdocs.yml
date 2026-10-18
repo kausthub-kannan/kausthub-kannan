@@ -34,6 +34,9 @@ markdown_extensions:
       permalink: true
   - pymdownx.superfences
   - pymdownx.highlight
+  # Renders "- [ ]" / "- [x]" as real checkboxes (DSA roadmap progress).
+  - pymdownx.tasklist:
+      custom_checkbox: true
 
 extra_css:
   - assets/stylesheets/extra.css

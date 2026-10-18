@@ -1,6 +1,6 @@
 # KK's Days
 
-![header-image](assets/header.jpg)
+<a href="assets/header.jpg"><img src="assets/header.jpg" alt="header-image" /></a>
 
 ## About Me
 
@@ -19,7 +19,7 @@ Basically, a little bit of everything that makes me *me*.
 
 ## For the Tech Bros Who Wanna Know More...
 
-<img align="right" width="300" src="https://skillicons.dev/icons?i=python,go,ts,react,fastapi,postgres,aws,pytorch,tensorflow,opencv,docker,kubernetes,terraform,linux,bash,obsidian&perline=4" alt="Tech stack" />
+<a href="https://skillicons.dev/icons?i=python,go,ts,react,fastapi,postgres,aws,pytorch,tensorflow,opencv,docker,kubernetes,terraform,linux,bash,obsidian&amp;perline=4"><img align="right" width="300" src="https://skillicons.dev/icons?i=python,go,ts,react,fastapi,postgres,aws,pytorch,tensorflow,opencv,docker,kubernetes,terraform,linux,bash,obsidian&amp;perline=4" alt="Tech stack" /></a>
 
 I'm a pretty flexible developer who enjoys taking on challenging problems, especially ones that demand some serious research. If there's an opportunity to explore something new, dig deep, or even publish something along the way, count me in!
 
