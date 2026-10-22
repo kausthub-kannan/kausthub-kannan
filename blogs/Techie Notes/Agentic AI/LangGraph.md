@@ -33,7 +33,7 @@ LangGraph does this with *checkpointers* and *threads*. The state of every super
 
 Threads and checkpoints come under *Short-term memory*. But when memory needs to be taken from different places, facts (from VectorDB, SQL, etc.). This is termed as *Long-term memory*. Checkpoints can be saved in databases to extend data. 
 
-![Simple Agent flow](../../assets/excalidraw/Simple Agent flow.excalidraw){ width="800" }
+![Simple Agent flow](../../assets/excalidraw/Agentic AI/Simple Agent flow.excalidraw){ width="800" }
 
 **Memory handling**:
 With increased number of invokes and runs, memory size increases and becomes not scale-able to use all of it. Both memories require selective consideration of required data. This is done using *filtering* and *trimming*. For filtering simple techniques such as summarization, semantic search and others. Trimming is token based approach of handling data. These approaches can be selected intuitively based on use cases.
@@ -43,7 +43,7 @@ With increased number of invokes and runs, memory size increases and becomes not
 **ReAct**:
 It is a pattern where the output of a model or tool is fed back into the model as input — for example, the output of a tool node is returned to the calling node for further reasoning. **Re**ason (interpret the output and decide the next step) + **Act** (execute and observe the result). This pattern is particularly useful when the same or similar tools are called repeatedly, such as tools that interact with a database.
 
-![ReAct](../../assets/excalidraw/ReAct.excalidraw){ width="100" }
+![ReAct](../../assets/excalidraw/Agentic AI/ReAct.excalidraw){ width="100" }
 
 **Human-In-The-Loop (HITL)**:
 Human-in-the-Loop (HITL) ensures that major decisions made by models or agents are verified and approved before proceeding to the next node or agent, reducing security risks and preventing cascading failures.

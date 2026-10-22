@@ -1,5 +1,7 @@
 A load balancer is a system that distributes incoming traffic across multiple servers so that no single server gets overloaded. Clients send requests to one address, the load balancer's, and it decides which backend server should handle each request. This keeps the application fast because the work is spread out, and it improves availability because if one server fails, the load balancer simply stops sending traffic to it and the others keep serving users. It also lets the system handle a very large number of simultaneous users, since capacity can be increased by adding more servers behind the load balancer (horizontal scaling) instead of buying one ever-bigger machine.
 
+![Load Balancer](../../../../assets/excalidraw/System Design/Fundamentals/Networking/Load Balancer.excalidraw)
+
 ## Types
 
 ### By Implementation
@@ -13,6 +15,7 @@ A load balancer is a system that distributes incoming traffic across multiple se
 1. **Layer 4:** A Layer 4 load balancer works at the transport layer. It looks only at information like the source and destination IP address, port and TCP or UDP protocol, and forwards the connection without looking at the content of the request. Because it does so little inspection, it is very fast and efficient, but it is not smart: it cannot tell the difference between a request for an image and a request for an API call.
 
 2. **Layer 7:** A Layer 7 load balancer works at the application layer. It can read the actual HTTP request, including the URL path, headers, cookies and API details, and make routing decisions based on them. For example, it can send /api traffic to one group of servers and /images traffic to another, route a user to the same server based on a cookie, or send mobile and desktop users to different backends. This makes it much smarter and more flexible, at the cost of more processing per request, so it is slightly slower than Layer 4.
+
 ## Load Balancer Algorithms
 
 The choice of server is made by a balancing algorithm, and the right one depends on the workload.

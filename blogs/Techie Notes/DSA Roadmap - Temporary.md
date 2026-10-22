@@ -1,33 +1,28 @@
 
-## 1. Arrays and Hashing
+## 1. Arrays
 
-- [ ] [189. Rotate Array](https://leetcode.com/problems/rotate-array/)
-- [ ] [31. Next Permutation](https://leetcode.com/problems/next-permutation/)
-- [ ] [560. Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/)
-- [ ] [523. Continuous Subarray Sum](https://leetcode.com/problems/continuous-subarray-sum/)
-
-## 2. Two Pointers
-
-- [ ] [75. Sort Colors](https://leetcode.com/problems/sort-colors/)
-- [ ] [881. Boats to Save People](https://leetcode.com/problems/boats-to-save-people/)
-- [ ] [80. Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
-- [ ] [16. 3Sum Closest](https://leetcode.com/problems/3sum-closest/)
-- [ ] [18. 4Sum](https://leetcode.com/problems/4sum/)
+ - [x] [Reverse String](https://leetcode.com/problems/reverse-string/)
+- [x] [Reverse Vowels of a String](https://leetcode.com/problems/reverse-vowels-of-a-string/)
+- [x] [Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/)
+- [x] [Long Pressed Name](https://leetcode.com/problems/long-pressed-name/)
+- [x] [Remove Duplicates from Sorted Array II](https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
+- [x] [Max Number of K-Sum Pairs](https://leetcode.com/problems/max-number-of-k-sum-pairs/)
+- [x] [Boats to Save People](https://leetcode.com/problems/boats-to-save-people/)
+- [x] [Valid Triangle Number](https://leetcode.com/problems/valid-triangle-number/)
+- [x] [Number of Subsequences That Satisfy the Given Sum Condition](https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
 
 ## 3. Sliding Window
 
-- [ ] [1004. Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)
-- [ ] [904. Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets/)
-- [ ] [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
-- [ ] [438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
-- [ ] [1248. Count Number of Nice Subarrays](https://leetcode.com/problems/count-number-of-nice-subarrays/)
-- [ ] [992. Subarrays with K Different Integers](https://leetcode.com/problems/subarrays-with-k-different-integers/)
+- [x] [1004. Max Consecutive Ones III](https://leetcode.com/problems/max-consecutive-ones-iii/)
+- [x] [904. Fruit Into Baskets](https://leetcode.com/problems/fruit-into-baskets/)
+- [x] [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+- [x] [438. Find All Anagrams in a String](https://leetcode.com/problems/find-all-anagrams-in-a-string/)
 
 ## 4. Stack and Monotonic Stack
 
-- [ ] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/)
-- [ ] [394. Decode String](https://leetcode.com/problems/decode-string/)
-- [ ] [901. Online Stock Span](https://leetcode.com/problems/online-stock-span/)
+- [x] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/)
+- [x] [394. Decode String](https://leetcode.com/problems/decode-string/)
+- [x] [901. Online Stock Span](https://leetcode.com/problems/online-stock-span/)
 - [ ] [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/)
 - [ ] [402. Remove K Digits](https://leetcode.com/problems/remove-k-digits/)
 - [ ] [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)

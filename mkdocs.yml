@@ -50,9 +50,12 @@ plugins:
 # Keep Obsidian internals, drawing sources and helper scripts out of the site.
 # Paths are relative to docs_dir (blogs/).
 exclude_docs: |
-  .obsidian/*
-  assets/excalidraw/*.excalidraw.md
-  scripts/*
+  .obsidian/**
+  scripts/**
+  # Obsidian excalidraw sources (both Name.excalidraw.md and Name.md styles).
+  # Only the exported compact-JSON .excalidraw files stay; mkdocs-excalidraw
+  # renders those client-side (see scripts/sync_excalidraw.py).
+  assets/excalidraw/**/*.md
 
 # No nav: section here — navigation is generated automatically from blogs/
 # via blogs/.nav.yml (awesome-nav). Never edit nav manually.

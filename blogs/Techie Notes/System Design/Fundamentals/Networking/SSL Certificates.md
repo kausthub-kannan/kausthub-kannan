@@ -10,6 +10,7 @@ In symmetric encryption, the same single key is used to encrypt the data on one 
 It is a common misunderstanding that symmetric encryption is weak because it uses only one key. The encryption itself is strong. The real problem is key distribution. Both sides need to have the same key, but if the client has to send that key to the server over the internet, an eavesdropper can capture it and then decrypt everything. Symmetric encryption is therefore safe only after both sides have somehow agreed on a secret key without anyone else learning it.
 
 ### Asymmetric
+![Asymmetric Encryption](../../../../assets/excalidraw/System Design/Fundamentals/Security/Asymmetric Encryption.excalidraw)
 Asymmetric encryption solves the key sharing problem by using a pair of mathematically linked keys: a public key and a private key. The public key can be shared with anyone, and the private key is never shared. Data encrypted with the public key can only be decrypted with the matching private key, so anyone can send a secret message to the key owner, but only the owner can read it.
 
 So when a client wants to send data to a server, it encrypts the data with the server's public key, and only the server can decrypt it with its own private key. The same works in the other direction using the client's public key and the client's private key. Neither private key ever travels across the network. The drawback is that asymmetric encryption is much slower and more computationally expensive than symmetric encryption, so it is not practical for encrypting all the data of a connection.
@@ -18,7 +19,6 @@ So when a client wants to send data to a server, it encrypts the data with the s
 Because each type has a weakness, TLS combines them. Asymmetric cryptography is used only at the start of the connection to securely agree on a shared secret, and that secret becomes a symmetric session key. All the actual data is then encrypted quickly with the symmetric session key. The session key is temporary and is thrown away when the connection ends. Modern TLS generates this key using an ephemeral Diffie-Hellman exchange, which has an important property called forward secrecy: even if the server's private key is stolen in the future, previously recorded traffic still cannot be decrypted.
 
 ## Issue of Eavesdropping 
-
 Asymmetric encryption still has one serious weakness. When the client asks for the server's public key, the key travels across the network, and an attacker sitting in the middle can intercept it and replace it with their own public key. The client, unaware of this, encrypts its data with the attacker's key. The attacker decrypts it with their own private key, reads it, then re-encrypts it with the server's real public key and passes it on. Neither side notices anything wrong, but the attacker sees everything. This is called a man-in-the-middle attack.
 
 The core issue is trust: the client has no way of knowing whether the public key it received really belongs to the server it wants to talk to. SSL/TLS certificates exist to solve exactly this.
@@ -33,6 +33,8 @@ The client then verifies it in two steps. First, it uses the CA's public key to 
 The attacker cannot get around this because producing a valid signature requires the CA's private key, which only the CA has. The attacker also cannot simply replace the whole certificate with their own, because a CA will not issue a valid certificate for a domain to someone who does not control it.
 
 The client needs the CA's public key to check the signature, and it gets it without any network request. Browsers and operating systems ship with a built-in trust store containing the public keys of a list of trusted root CAs. In practice, root CAs rarely sign server certificates directly, since their keys are kept very secure and offline. Instead, a root CA signs an intermediate CA, and the intermediate CA signs the server's certificate. The server sends its certificate along with the intermediate certificates, and the client follows the chain upward, verifying each signature until it reaches a root it already trusts. If any link in the chain is missing, expired or invalid, the browser shows a security warning.
+
+![TLS Handshake](../../../../assets/excalidraw/System Design/Fundamentals/Security/TLS Handshake.excalidraw)
 
 ## TLS Handshake
 The steps that happen when a client connects to an HTTPS server, in simplified form, are the following.

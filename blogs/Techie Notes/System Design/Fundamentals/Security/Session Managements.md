@@ -11,13 +11,12 @@ HTTP is stateless: each request arrives with no memory of the previous one. Afte
 ### Server Side Sessions
 After the user logs in successfully, the server creates a session: a record on the server holding who the user is, when the session started and any other state. It generates a long, random, unguessable session ID and sends it to the browser in a cookie. The browser sends this cookie automatically with every request, and the server looks the ID up to find the session.
 
-```
+The sessions is established in below steps:
 1. POST /login (email + password)
 2. Server verifies, creates session {id: "9f8a...", userId: 42}, stores it
 3. Response: Set-Cookie: sid=9f8a...; HttpOnly; Secure; SameSite=Lax
 4. Later requests: Cookie: sid=9f8a...  ->  server looks up the session
 5. POST /logout -> server deletes the session, the ID stops working
-```
 
 The big advantage of sessions is control. Because the state lives on the server, a session can be ended instantly, for example on logout, a password change or a suspected breach, and nothing sensitive is stored in the browser, only a meaningless ID. The disadvantage is that the server must store and look up the session on every request. In a system with several servers behind a load balancer, this means the sessions must be shared, which is why session data is kept in a fast shared store such as Redis, as in the scaling and caching notes, instead of in the memory of one server. The alternative, sticky sessions, ties each user to one server and complicates scaling and failover.
 
@@ -46,11 +45,11 @@ A JWT is a compact, signed token that carries information, called claims, about 
 
 A JWT has three parts, separated by dots: `header.payload.signature`. The header and payload are JSON objects encoded in Base64URL, and the signature is computed over them with a key.
 
-|Part|Contents|Example (decoded)|
-|---|---|---|
-|Header|Signing algorithm and the key ID|`{"alg": "RS256", "typ": "JWT", "kid": "key-1"}`|
-|Payload|The claims|`{"iss": "https://auth.example.com", "sub": "42", "aud": "orders-api", "exp": 1760000900, "iat": 1760000000, "scope": "orders:read"}`|
-|Signature|Signature of the encoded header and payload|Computed with a secret or private key|
+| Part      | Contents                                    | Example (decoded)                                                                                                                     |
+| --------- | ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Header    | Signing algorithm and the key ID            | `{"alg": "RS256", "typ": "JWT", "kid": "key-1"}`                                                                                      |
+| Payload   | The claims                                  | `{"iss": "https://auth.example.com", "sub": "42", "aud": "orders-api", "exp": 1760000900, "iat": 1760000000, "scope": "orders:read"}` |
+| Signature | Signature of the encoded header and payload | Computed with a secret or private key                                                                                                 |
 
 The standard claims are the following.
 
@@ -104,19 +103,7 @@ Key terms: a scope is a named permission that limits access, such as `drive.read
 ### Authorization Code Flow with PKCE
 This is the recommended flow for web apps, single-page apps and mobile apps. PKCE (Proof Key for Code Exchange, pronounced "pixy") protects it against interception of the authorization code, and it is now advised even for clients that have a secret.
 
-```
- User/Browser          Client app              Authorization server        Resource server
-     |  click "connect"     |                           |                         |
-     |--------------------->| creates code_verifier,    |                         |
-     |                      | code_challenge, state     |                         |
-     |<-- redirect to /authorize?...&code_challenge=... |                         |
-     |---------------------------------------------->  | user logs in, consents  |
-     |<-- redirect back to client: ?code=abc&state=xyz  |                         |
-     |--------------------->| POST /token (code + code_verifier)                 |
-     |                      |<-- access_token (+ refresh_token)                  |
-     |                      |------------------ GET /files (Bearer token) ------>|
-     |                      |<----------------- the data ------------------------|
-```
+![PKCE](../../../../assets/excalidraw/System Design/Fundamentals/Security/PKCE.excalidraw)
 
 The steps in detail:
 

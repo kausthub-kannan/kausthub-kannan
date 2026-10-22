@@ -15,7 +15,7 @@ The architecture classification is based on two primary distinctions:
 **Supervisor** **(Centralised)**:
 Supervisor based design is where a central agent called the *Supervisor* decides which sub-agent to delegate  which task. This reduces the context bag to be carried as every agent has isolated context and the approach is more structural. The Supervisor has only one task; .i.e to delegate tasks to other agents. Agents used by the Supervisor are like tools used by agents. Supervisor can call the same agent concurrently (Map-Reduce based approach) 
 
-![Supervisor Agent](../../assets/excalidraw/Supervisor Agent.excalidraw){ width="800" }
+![Supervisor Agent](../../assets/excalidraw/Agentic AI/Supervisor Agent.excalidraw){ width="800" }
 
 Best to be used when:
 1. Task is structural
@@ -26,7 +26,7 @@ When multiple Supervisors are brought who in turn manage other supervisors, it b
 **Swarm** **(Decentralised)**:
 Swarm based design in contrast is decentralised; a single central agent like supervisor does not decide which agent to call. The agents can communicate with each other thereby handing tasks to each other termed as *hand-offs*. These are very useful when tasks are not structured and are dynamic. These hand-offs when can be done back to previous agents it turns into a **Mesh** approach.
 
-![Swarm Agent](../../assets/excalidraw/Swarm Agent.excalidraw){ width="800" }
+![Swarm Agent](../../assets/excalidraw/Agentic AI/Swarm Agent.excalidraw){ width="800" }
 
 Mostly it's combination of all above agents structures used together leads to a robust Deep Agent design. Swarm agents are successful in executing tasks at lower levels  (as a team), Supervisor to delegate to-do tasks (as a manager) and Hierarchical for a system. 
 

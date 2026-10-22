@@ -48,6 +48,8 @@ Once connected, the client and server send messages independently. In a delivery
 ### Connection Termination
 A WebSocket connection stays open until either side closes it, the network fails or an intermediary, such as a proxy or load balancer, ends it. A persistent connection does not guarantee it will stay alive forever, so applications must detect failures and reconnect. A clean close uses a close frame with a status code.
 
+![Web Sockets](../../../../assets/excalidraw/System Design/Fundamentals/Networking/Web Sockets.excalidraw)
+
 |Code|Meaning|
 |---|---|
 |1000|Normal closure|
@@ -56,40 +58,27 @@ A WebSocket connection stays open until either side closes it, the network fails
 |1011|The server hit an unexpected error|
 |1006|Abnormal closure, reported locally when the connection dropped without a close frame|
 
-## Loadbalancing in Websockets
-Unlike ordinary HTTP requests, which can be routed independently to any server, a WebSocket connection stays attached to the gateway (server) that accepted it, for as long as it lasts. This changes how load balancing works. The load balancer must support WebSocket upgrades and allow connections that last for a long time, so idle timeouts need to be raised, and requests need to be passed on with the upgrade headers. For nginx, that looks like this.
+## Load balancing in Websockets
+Unlike ordinary HTTP requests, which an L7 load balancer can route independently to any backend, a WebSocket connection stays attached to the server that accepted it for as long as it lasts. The balancing decision is made once, at connection time. This changes how load balancing works:
+- The LB must pass the **upgrade handshake** through (an L7 LB has to forward the `Upgrade` and `Connection` headers; an L4 LB just relays bytes and needs no special support).
+- The LB must tolerate **long-lived connections**, so idle timeouts have to be raised. Sending periodic **ping/pong heartbeats** is better than relying on a huge timeout alone, because it keeps the connection from looking idle and also detects dead peers.
 
-```
-location /ws {
-    proxy_pass http://websocket_backend;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-    proxy_read_timeout 3600s;
-}
-```
+If the server holding a connection fails, all of its connections are lost, and clients must reconnect (landing on another server) and resume. That’s another reason for the reconnect logic discussed earlier.
 
-If the gateway fails, all its connections are lost, and clients must reconnect to another gateway, which is another reason for the reconnect logic above. For balancing the load, "least connections" tends to work better than round robin, since connections last very different amounts of time and the number currently open is what really matters.
+For distributing load, **least connections** usually works better than round robin, because connections last very different lengths of time and the number currently open is what actually loads a server. Also, existing connections never move: a newly added server only receives _new_ connections, so rebalancing means gradually draining and reconnecting clients.
 
-Sticky sessions can help when an application requires a client's repeated connections to reach the same instance, for example when reconnecting to resume a session. But they do not solve message distribution across multiple instances, which is the bigger problem, covered next.
+Load balancers come in two kinds, and they treat WebSockets differently. An **L4 load balancer** works at the TCP level: it looks only at IPs and ports, picks a backend when the connection’s first packet arrives, and relays that connection’s traffic to the same backend from then on, without reading or terminating anything. The WebSocket upgrade passes through as ordinary bytes, so it needs no special WebSocket support, and it adds very little overhead. The tradeoff is that it can’t see the HTTP content, so it can’t route by URL path or header, and TLS is usually passed through for the backend to handle. An **L7 load balancer** (nginx, Envoy, an AWS ALB) terminates the client’s TCP and TLS connections, reads the HTTP upgrade request, and opens a separate connection to the chosen backend, relaying WebSocket frames between the two. This lets it route by path or host (for example `/ws` to a WebSocket pool and everything else to the REST servers), authenticate during the upgrade, and handle TLS centrally. But it must be configured to forward the `Upgrade` and `Connection` headers, and its idle timeouts must be raised, because it holds two live connections per client and will cut either one if it sits quiet too long. For both types, the balancing decision happens once, at connection time, and the connection stays pinned to that backend until it closes.
 
 ## Scaling
-uppose a customer is connected to gateway 1, watching their delivery, and the driver's location update arrives at gateway 2. Gateway 2 has no connection to that customer, so how does the update reach them?
+Suppose a customer is connected to gateway 1, watching their delivery, and the driver's location update arrives at gateway 2. Gateway 2 has no connection to that customer, so how does the update reach them?
 
 The standard answer is a publish/subscribe backplane. Every gateway subscribes to a shared message system, such as Redis Pub/Sub, Kafka or NATS, for the topics its connected clients care about. When a location update comes in, it is published once to a topic such as `order:42`, and every gateway that holds a subscriber for that order receives it and pushes it down the right socket.
-
-```
- Driver app --> Location service --publish--> [ Redis / Kafka topic: order:42 ]
-                                                    |               |
-                                          subscribed by      subscribed by
-                                            Gateway 1          Gateway 3
-                                                |                  
-                                          pushes to customer's socket
-```
 
 This keeps the gateways thin and interchangeable: they only hold open connections and forward messages, while the real state lives elsewhere, such as the latest driver location in Redis, so a client that reconnects can immediately get the current state. This approach ties back to the message queue and scaling notes, and it follows the same rule as stateless services: keep as little state as possible in the server process.
 
 The number of connections one server can hold is limited by memory (each connection takes some tens of kilobytes or more) and by operating system limits such as the number of open file descriptors. A well-tuned server can hold tens or hundreds of thousands of idle connections, but the real limit depends on how much traffic each one carries, so capacity should be tested and the number of gateways scaled out as connections grow. Autoscaling is usually based on the number of open connections, not on CPU alone.
+
+![Scaling Web Sockets](../../../../assets/excalidraw/System Design/Fundamentals/Networking/Scaling Web Sockets.excalidraw)
 
 ## Security
 | Concern                        | What to do                                                                                                                                                                                                                              |

@@ -2,6 +2,8 @@ DNS translates a human-readable domain name like example.com into the IP address
 
 ## How Resolution Works
 
+![DNS](../../../../assets/excalidraw/System Design/Fundamentals/Networking/DNS.excalidraw)
+
 When a browser or app needs to reach a domain, it first has to resolve that hostname into an IP. The lookup starts locally, at the browser cache, then the OS cache (handled by a small component called the stub resolver), and then the router. If none of them know the answer, the stub resolver forwards the query to a recursive resolver, which is usually run by the ISP or a public service such as Google (8.8.8.8) or Cloudflare (1.1.1.1).
 
 The recursive resolver also keeps a cache, and since it serves a huge number of users, most popular domains are already cached there. This is why the majority of lookups never go beyond this point. When the resolver does not have the answer, it starts at the top of the DNS hierarchy and works its way down. It asks a root server, which does not know the IP but replies with the addresses of the TLD servers responsible for the extension (.com, .org, .in). The resolver then asks the TLD server, which replies with the authoritative name servers for that specific domain. Finally the resolver asks the authoritative server, which holds the real records and returns the IP address. The resolver caches this answer for a limited time, passes it back to the client, and the client connects to the server.

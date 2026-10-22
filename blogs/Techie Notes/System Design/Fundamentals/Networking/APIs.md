@@ -76,6 +76,7 @@ By access:
 | Composite          | Clients needing combined data | Gateway call that gathers data from several services | Reduces the number of round trips                 |
 
 By style:
+![API](../../../../assets/excalidraw/System Design/Fundamentals/Networking/API.excalidraw)
 
 |Aspect|REST|GraphQL|gRPC|SOAP|
 |---|---|---|---|---|
