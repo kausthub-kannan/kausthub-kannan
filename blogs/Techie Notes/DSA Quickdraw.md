@@ -1,4 +1,5 @@
 
+
 ## 1. Arrays
 
  - [x] [Reverse String](https://leetcode.com/problems/reverse-string/)
@@ -23,40 +24,40 @@
 - [x] [735. Asteroid Collision](https://leetcode.com/problems/asteroid-collision/)
 - [x] [394. Decode String](https://leetcode.com/problems/decode-string/)
 - [x] [901. Online Stock Span](https://leetcode.com/problems/online-stock-span/)
-- [ ] [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/)
-- [ ] [402. Remove K Digits](https://leetcode.com/problems/remove-k-digits/)
-- [ ] [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)
+- [x] [503. Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/)
+- [x] [402. Remove K Digits](https://leetcode.com/problems/remove-k-digits/)
+- [x] [316. Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/)
 - [ ] [907. Sum of Subarray Minimums](https://leetcode.com/problems/sum-of-subarray-minimums/)
 
 ## 5. Binary Search
 
-- [ ] [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
+- [x] [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)
 - [ ] [162. Find Peak Element](https://leetcode.com/problems/find-peak-element/)
-- [ ] [1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
+- [x] [1011. Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/)
 - [ ] [1482. Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/)
 - [ ] [410. Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/)
 
 ## 6. Linked Lists
 
-- [ ] [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
-- [ ] [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
-- [ ] [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
-- [ ] [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)
-- [ ] [328. Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/)
-- [ ] [82. Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
-- [ ] [148. Sort List](https://leetcode.com/problems/sort-list/)
+- [x] [234. Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
+- [x] [160. Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/)
+- [x] [142. Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+- [x] [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/)
+- [x] [328. Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/)
+- [x] [82. Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
+- [x] [148. Sort List](https://leetcode.com/problems/sort-list/)
 
 ## 7. Trees
 
-- [ ] [222. Count Complete Tree Nodes](https://leetcode.com/problems/count-complete-tree-nodes/)
-- [ ] [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
-- [ ] [113. Path Sum II](https://leetcode.com/problems/path-sum-ii/)
-- [ ] [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
-- [ ] [450. Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/)
-- [ ] [116. Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)
-- [ ] [114. Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
-- [ ] [863. All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/)
-- [ ] [987. Vertical Order Traversal of a Binary Tree](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/)
+- [x] [222. Count Complete Tree Nodes](https://leetcode.com/problems/count-complete-tree-nodes/)
+- [x] [236. Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+- [x] [113. Path Sum II](https://leetcode.com/problems/path-sum-ii/)
+- [x] [103. Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
+- [x] [450. Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/)
+- [x] [116. Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/)
+- [x] [114. Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
+- [x] [863. All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/)
+- [x] [987. Vertical Order Traversal of a Binary Tree](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/)
 
 ## 8. Heap and Priority Queue
 
@@ -75,19 +76,19 @@
 
 ## 10. Backtracking
 
-- [ ] [77. Combinations](https://leetcode.com/problems/combinations/)
-- [ ] [784. Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/)
-- [ ] [47. Permutations II](https://leetcode.com/problems/permutations-ii/)
-- [ ] [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
-- [ ] [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/)
-- [ ] [526. Beautiful Arrangement](https://leetcode.com/problems/beautiful-arrangement/)
-- [ ] [1219. Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold/)
-- [ ] [473. Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/)
-- [ ] [1239. Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/)
-- [ ] [698. Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/)
-- [ ] [140. Word Break II](https://leetcode.com/problems/word-break-ii/)
-- [ ] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/)
-- [ ] [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/)
+- [x] [77. Combinations](https://leetcode.com/problems/combinations/)
+- [x] [784. Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/)
+- [x] [47. Permutations II](https://leetcode.com/problems/permutations-ii/)
+- [x] [216. Combination Sum III](https://leetcode.com/problems/combination-sum-iii/)
+- [x] [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/)
+- [x] [526. Beautiful Arrangement](https://leetcode.com/problems/beautiful-arrangement/)
+- [x] [1219. Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold/)
+- [x] [473. Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/)
+- [x] [1239. Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/)
+- [x] [698. Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/)
+- [x] [140. Word Break II](https://leetcode.com/problems/word-break-ii/)
+- [x] [282. Expression Add Operators](https://leetcode.com/problems/expression-add-operators/)
+- [x] [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/)
 
 ## 11. Graphs
 

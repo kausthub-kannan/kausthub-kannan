@@ -7,21 +7,7 @@ A table is in First Normal Form when each column contains a single value for eac
 
 In practical relational database design, each row should also be identifiable through a key.
 ### Example
-
-| Student ID | Student Name | Phone Numbers          |
-| ---------- | ------------ | ---------------------- |
-| 101        | Arun         | 9876543210, 9876500000 |
-| 102        | Bala         | 9876511111             |
-
-The `Phone Numbers` column stores multiple values in a single cell, making individual numbers difficult to query and maintain.
-
-But after converting to 1NF:
-
-| Student ID | Student Name | Phone Number |
-| ---------- | ------------ | ------------ |
-| 101        | Arun         | 9876543210   |
-| 101        | Arun         | 9876500000   |
-| 102        | Bala         | 9876511111   |
+![1NF](../../../../assets/excalidraw/System Design/Fundamentals/Databases/1NF.excalidraw)
 
 ## 2NF - Second Form
 
@@ -33,235 +19,46 @@ A table is in Second Normal Form if:
 Partial dependencies are relevant when a candidate key contains multiple columns.
 
 ### Example
-Consider a table that records student enrollments.
+![2NF](../../../../assets/excalidraw/System Design/Fundamentals/Databases/2NF.excalidraw)
 
-|Student ID|Course ID|Student Name|Course Name|Grade|
-|---|---|---|---|---|
-|101|C01|Arun|SQL|A|
-|101|C02|Arun|Python|B|
-|102|C01|Bala|SQL|A|
-
-Assume the composite primary key is `(Student ID, Course ID)`.
-
-The functional dependencies are:
-
-- `Student ID → Student Name`
-- `Course ID → Course Name`
-- `(Student ID, Course ID) → Grade
-
-Student Name depends only on Student ID, while Course Name depends only on Course ID. These are partial dependencies because neither attribute requires the entire composite key to be determined.
-
-After converting to 2NF:
-
-**Students**
-
-|Student ID (PK)|Student Name|
-|---|---|
-|101|Arun|
-|102|Bala|
-
-**Courses**
-
-|Course ID (PK)|Course Name|
-|---|---|
-|C01|SQL|
-|C02|Python|
-
-**Enrollments**
-
-|Student ID (FK)|Course ID (FK)|Grade|
-|---|---|---|
-|101|C01|A|
-|101|C02|B|
-|102|C01|A|
-
-The `Enrollments` table uses `(Student ID, Course ID)` as its composite primary key. Grade depends on the complete key.
 
 ## 3NF - Third Normal Form
 A table is in Third Normal Form if:
 
 1. It is already in 2NF.
-2. For every non-trivial functional dependency (X \rightarrow A), either (X) is a superkey or (A) is a prime attribute (an attribute belonging to at least one candidate key).    
+2. For every non-trivial functional dependency (X - > A), either (X) is a superkey or (A) is a prime attribute (an attribute belonging to at least one candidate key).    
 
 A useful introductory rule is to eliminate transitive dependencies of non-key attributes on candidate keys.
 
 ### Example
-
-Consider an employee table.
-
-|Employee ID (PK)|Employee Name|Department ID|Department Name|
-|---|---|---|---|
-|E01|Arun|D01|Engineering|
-|E02|Bala|D02|Finance|
-|E03|Chitra|D01|Engineering|
-
-Assume each department has exactly one department name.
-
-The functional dependencies are:
-
-- `Employee ID → Employee Name, Department ID`
-- `Department ID → Department Name`
-
-Therefore:
-`Employee ID → Department ID → Department Name`
-Department Name depends on Employee ID through Department ID. It is a transitive dependency, and Department Name is repeated for every employee in the same department.
-
-Converting to 3NF:
-
-**Employees**
-
-|Employee ID (PK)|Employee Name|Department ID (FK)|
-|---|---|---|
-|E01|Arun|D01|
-|E02|Bala|D02|
-|E03|Chitra|D01|
-
-**Departments**
-
-|Department ID (PK)|Department Name|
-|---|---|
-|D01|Engineering|
-|D02|Finance|
+![3NF](../../../../assets/excalidraw/System Design/Fundamentals/Databases/3NF.excalidraw)
 
 
-## BCNF - Boyce-Codd Normal Form
+**Note:**
+BCNF is a stricter version of 3NF. A table is in BCNF if, for every non-trivial functional dependency (X - > Y), (X) is a superkey. Unlike 3NF, BCNF does not provide an exception for a dependency whose right-hand-side attribute is prime.
 
-BCNF is a stricter version of 3NF. A table is in BCNF if, for every non-trivial functional dependency (X \rightarrow Y), (X) is a superkey. Unlike 3NF, BCNF does not provide an exception for a dependency whose right-hand-side attribute is prime.
-
-### Example
-Suppose instructors can teach multiple courses, but each instructor teaches in only one room. A course can have multiple instructors, and each instructor-course assignment is recorded.
-
-| Student ID | Course | Instructor | Room |
-| ---------- | ------ | ---------- | ---- |
-| S01        | SQL    | Ravi       | R101 |
-| S02        | SQL    | Ravi       | R101 |
-| S01        | Python | Meera      | R202 |
-
-For a simplified version of this example, assume:
-
-- `(Student ID, Course) → Instructor`    
-- `Instructor → Room`
-
-Also assume a student can take multiple courses and a course may have multiple students.
-
-The candidate key is `(Student ID, Course)`, while `Instructor → Room` holds because each instructor has one room. Instructor alone is not a superkey of the original table, so this dependency violates BCNF.
-
-### Example
-Separate instructor room assignments from student-course enrolments.
-
-**Instructor Rooms**
-
-| Instructor (PK) | Room |
-| --------------- | ---- |
-| Ravi            | R101 |
-| Meera           | R202 |
-
-**Student Courses**
-
-|Student ID|Course|Instructor|
-|---|---|---|
-|S01|SQL|Ravi|
-|S02|SQL|Ravi|
-|S01|Python|Meera|
-
-In `Instructor Rooms`, Instructor determines Room and is the primary key. In `Student Courses`, the key is `(Student ID, Course)`, under the stated assumptions. This decomposition is lossless for the stated dependencies and preserves the instructor-room dependency.
 ## 4NF - Fourth Normal Form
-
 A table is in Fourth Normal Form if it is already in BCNF and has no non-trivial multivalued dependency (X -> Y) unless (X) is a superkey. Multivalued dependencies arise when two or more independent sets of values are associated with the same entity.
 ### Example
+![4NF](../../../../assets/excalidraw/System Design/Fundamentals/Databases/4NF.excalidraw)
 
-Suppose an employee has multiple skills and multiple languages, and the skills are independent of the languages.
-
-| Employee ID | Skill  | Language |
-| ----------- | ------ | -------- |
-| E01         | Python | English  |
-| E01         | Python | Japanese |
-| E01         | SQL    | English  |
-| E01         | SQL    | Japanese |
-
-The employee has two skills and two languages. All four combinations appear because the two relationships are independent.
-
-The dependencies are:
-
-- `Employee ID →→ Skill`
-- `Employee ID →→ Language`
-
-The employee ID alone is not a superkey of the combined table, so these independent multivalued dependencies violate 4NF.
-
-### Convert to 4NF
-
-**Employee Skills**
-
-|Employee ID|Skill|
-|---|---|
-|E01|Python|
-|E01|SQL|
-
-**Employee Languages**
-
-| Employee ID | Language |
-| ----------- | -------- |
-| E01         | English  |
-| E01         | Japanese |
 ## Fifth Normal Form (5NF)
-
 Fifth Normal Form, also called Project-Join Normal Form (PJ/NF), addresses redundancy caused by join dependencies that cannot be explained adequately by ordinary functional or multivalued dependencies. A table is in 5NF if every non-trivial join dependency is implied by its candidate keys.
 
 ### Example
-Consider a supplier, part, and project relationship. Suppose the business rules guarantee that a supplier can supply a part to a project whenever all three of the following pairwise relationships exist:
+![5NF](../../../../assets/excalidraw/System Design/Fundamentals/Databases/5NF.excalidraw)
 
-- The supplier supplies the part.
-- The supplier is approved for the project.
-- The project uses the part.
-
-Under this specific rule, the ternary relationship can be reconstructed from three pairwise relationships.
-
-**Supplier-Part-Project**
-
-|Supplier|Part|Project|
-|---|---|---|
-|S1|P1|J1|
-|S1|P1|J2|
-|S1|P2|J1|
-
-Assume the complete set of valid triples is exactly the join of the three pairwise relationships described below. Without this business rule, decomposing the table this way could create invalid combinations.
-
-After converting to 5NF:
-
-**Supplier-Part**
-
-|Supplier|Part|
-|---|---|
-|S1|P1|
-|S1|P2|
-
-**Supplier-Project**
-
-|Supplier|Project|
-|---|---|
-|S1|J1|
-|S1|J2|
-
-**Project-Part**
-
-|Project|Part|
-|---|---|
-|J1|P1|
-|J1|P2|
-|J2|P1|
-
-Joining these three tables reconstructs the original triples under the stated business rule.
 
 ## Summary: All Normal Forms
 
-|Normal Form|Main Requirement|Problem Addressed|
-|---|---|---|
-|1NF|Atomic column values; no repeating groups|Multivalued cells and repeating groups|
-|2NF|1NF + no partial dependency of non-prime attributes on a candidate key|Partial dependencies on composite keys|
-|3NF|For every non-trivial FD, determinant is a superkey or dependent is prime|Transitive dependencies in common cases|
-|BCNF|Every determinant of a non-trivial functional dependency is a superkey|Remaining functional-dependency anomalies|
-|4NF|Every non-trivial multivalued dependency has a superkey as determinant|Independent multivalued relationships|
-|5NF|Every non-trivial join dependency is implied by candidate keys|Join-dependency redundancy|
+| Normal Form | Requirement                                                               | Almost always required?               | When you might skip or relax it                                                                                                                                                                                                              |
+| ----------- | ------------------------------------------------------------------------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **1NF**     | Atomic column values; no repeating groups                                 | Yes, nearly always                    | Deliberate use of JSON/array columns for semi-structured data (e.g., tags, flexible attributes) where you never query inside the value relationally. Note this technically violates 1NF, so do it knowingly.                                 |
+| **2NF**     | 1NF + no partial dependency of non-prime attributes on a candidate key    | Yes                                   | Rarely skipped by choice; partial dependencies usually just mean a design mistake. Only relax in read-only reporting tables.                                                                                                                 |
+| **3NF**     | For every non-trivial FD, determinant is a superkey or dependent is prime | Standard target for OLTP              | Reporting/analytics tables, or when a transitive dependency is stable and the join cost is measurable (e.g., storing `city` alongside `zip_code` that never changes).                                                                        |
+| **BCNF**    | Every determinant of a non-trivial functional dependency is a superkey    | Good default, but optional            | When decomposing would **lose a functional dependency** (some BCNF decompositions are not dependency-preserving), forcing you to enforce the constraint in application code or with expensive multi-table checks. In that case, stay at 3NF. |
+| **4NF**     | Every non-trivial multivalued dependency has a superkey as determinant    | Only when the problem actually exists | Needed when a table stores two _independent_ multivalued facts (e.g., employee → skills and employee → languages in one table, causing a cross-product). If you don’t have that pattern, 4NF is satisfied automatically.                     |
+| **5NF**     | Every non-trivial join dependency is implied by candidate keys            | Rarely worth pursuing                 | Only for genuine join dependencies, usually in complex many-to-many-to-many relationships. Most real schemas never need explicit 5NF work, and over-decomposing here adds joins for little gain.                                             |
 
 Normalization does not necessarily mean that every possible table should be decomposed as much as possible. Excessive decomposition may require more joins and can complicate query execution. In read-heavy systems, carefully chosen denormalization may be justified for performance, provided consistency is maintained.
 

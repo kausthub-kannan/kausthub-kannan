@@ -1,6 +1,5 @@
-
 ## Transactions and the Concurrency Problem
-A transaction is a group of operations that the database treats as one unit, with the ACID guarantees described in the ACID vs BASE notes. The Isolation guarantee is the subject here: when many transactions run at the same time, each should behave as if it ran alone. Perfect isolation (running one transaction at a time) would be very slow, so databases offer levels that allow some interference in exchange for speed. To choose a level, you need to know the problems that can occur.
+A transaction is a group of operations that the database treats as one unit, with the ACID guarantees described in the ACID vs BASE. The Isolation guarantee is the subject here: when many transactions run at the same time, each should behave as if it ran alone. Perfect isolation (running one transaction at a time) would be very slow, so databases offer levels that allow some interference in exchange for speed. To choose a level, you need to know the problems that can occur.
 
 ### Concurrency Anomalies
 |Anomaly|What happens|Example|
@@ -62,23 +61,17 @@ A real system rarely has a single database. The same data must also appear in a 
 
 Log-based CDC is the standard modern approach. Every database already records each change in a log, so that it can recover from a crash and feed replicas, as described in the replication notes. A CDC tool reads this same log as one more consumer, so it does not add any load to the queries of the application.
 
-|Database|Log used by CDC|
-|---|---|
-|PostgreSQL|Write-ahead log, read through logical decoding and replication slots|
-|MySQL and MariaDB|Binary log (binlog)|
-|MongoDB|Oplog, exposed through change streams|
-|SQL Server|Built-in CDC tables and the transaction log|
-|Oracle|Redo logs, for example through LogMiner|
+| Database          | Log used by CDC                                                      |
+| ----------------- | -------------------------------------------------------------------- |
+| PostgreSQL        | Write-ahead log, read through logical decoding and replication slots |
+| MySQL and MariaDB | Binary log (binlog)                                                  |
+| MongoDB           | Oplog, exposed through change streams                                |
+| SQL Server        | Built-in CDC tables and the transaction log                          |
+| Oracle            | Redo logs, for example through LogMiner                              |
 
 ### Typical FLow
-```
- [ App ] --> [ Database ] --WAL--> [ CDC connector (Debezium) ] --> [ Kafka ]
-                                                                      |
-                              +---------------------+-----------------+-----------------+
-                              |                     |                                   |
-                       [ Elasticsearch ]      [ Redis cache ]                  [ Data warehouse ]
-                       (search stays in sync)  (invalidate on change)         (analytics, reporting)
-```
+
+![Web Sockets](../../../../assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC.excalidraw)
 
 Debezium is the best known open-source tool. It runs on Kafka Connect, reads the database log and publishes each change to a Kafka topic, usually one per table. Other options include AWS Database Migration Service, Maxwell and managed data pipeline products such as Fivetran and Airbyte. Putting Kafka in the middle means that any number of consumers can read the same stream at their own pace and replay it, as in the message queue notes.
 
@@ -94,7 +87,7 @@ Debezium is the best known open-source tool. It runs on Kafka Connect, reads the
 |Read models and materialized views|Precomputed views are updated incrementally, instead of through full refreshes|
 
 ### Out of the box pattern
-service, which other services should not depend on. The outbox pattern fixes this. The application writes its business change and a meaningful event, such as "OrderPlaced", into an outbox table in the same transaction, which guarantees both or neither. A CDC connector then reads the outbox table from the log and publishes those events to Kafka. This gives reliable event publishing, with no dual write, and with events designed as a stable contract, and it is the standard way to implement the reliable messaging needed by sagas, as in the architecture and coordination notes.
+The application writes its business change and a meaningful event, such as "OrderPlaced", into an outbox table in the same transaction, which guarantees both or neither. A CDC connector then reads the outbox table from the log and publishes those events to Kafka. This gives reliable event publishing, with no dual write, and with events designed as a stable contract, and it is the standard way to implement the reliable messaging needed by sagas, as in the architecture and coordination notes.
 
 ### CDC vs Replication
 |Aspect|Database replication|CDC|

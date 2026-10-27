@@ -2,7 +2,13 @@ A message queue is a piece of middleware that lets different applications, servi
 
 The easiest analogy is a post box. The sender drops a letter in and leaves, without needing the receiver to be home, and the receiver collects it later at their own pace. The two never need to be available at the same moment, and neither needs to know the other's address.
 
-Why use queues? The first benefit is decoupling: producers and consumers are independent, so they can be written in different languages, deployed separately and changed without breaking each other, as long as the message format stays compatible. The second is load leveling, where a sudden burst of traffic is stored in the queue and processed at a steady rate instead of crushing the downstream service. The third is scalability, since adding more consumers on the same queue (competing consumers) increases processing speed without changing the producer. The fourth is reliability, because messages are stored until processed and failed work can be retried. The fifth is fault isolation: if the email service is down, orders are still accepted, and the emails go out when the service recovers. The last is that slow, heavy tasks such as sending emails, resizing images, generating reports or processing payments can be moved out of the user's request.
+Why use queues?
+1. **Decoupling:** Producers and consumers are independent, so they can be written in different languages, deployed separately and changed without breaking each other, as long as the message format stays compatible.
+2. **Load Leveling:** It is where a sudden burst of traffic is stored in the queue and processed at a steady rate instead of crushing the downstream service. 
+3. **Scalability:** Since adding more consumers on the same queue (competing consumers) increases processing speed without changing the producer. 
+4. **Reliability:** Messages are stored until processed and failed work can be retried. 
+5. **Isolation:** If the email service is down, orders are still accepted, and the emails go out when the service recovers. 
+6. **Lower Latency:** Heavy tasks such as sending emails, resizing images, generating reports or processing payments can be moved out of the user's request.
 
 ## Core Components
 | Component             | Role                                                                                               | Example                                    |
@@ -29,7 +35,7 @@ The producer creates a message and sends it to the broker, which stores it in th
 |Complexity|Simple|Extra infrastructure and eventual consistency to manage|
 
 **Example:**
-Take an online order. If the order service called the email service, the inventory service and the analytics service one after another, the customer would wait for all of them, and a failure in any one would fail the whole order. With a queue, the order service saves the order, publishes one "order placed" message and responds immediately. The email, inventory and analytics services each process that message independently. This is the same pattern as the asynchronous API from the API notes, where the server returns 202 Accepted and the work continues in the background.
+Take an online order. If the order service called the email service, the inventory service and the analytics service one after another, the customer would wait for all of them, and a failure in any one would fail the whole order. With a queue, the order service saves the order, publishes one "order placed" message and responds immediately. The email, inventory and analytics services each process that message independently. This is the same pattern as the asynchronous API, where the server returns 202 Accepted and the work continues in the background.
 
 ## Delivery Guarantees
 Networks and consumers can fail at any moment, so brokers offer different promises about how many times a message is delivered.
@@ -49,13 +55,13 @@ Some messages can never succeed, such as a message with corrupt data, and are ca
 A queue is described as FIFO, meaning first in, first out, but strict ordering is more complicated than it sounds. A single queue with a single consumer preserves order. As soon as several consumers read the same queue in parallel, messages are processed at the same time and may finish in a different order, and retries put old messages back behind newer ones. Standard SQS queues therefore give best-effort ordering only, while SQS FIFO queues guarantee order within a message group. Kafka guarantees order within a partition, not across the whole topic. The usual design is to keep related messages together, for example all events for one order or one user, by giving them the same key so that they land in the same partition or group and are handled in order, while unrelated messages are processed in parallel.
 
 ## Queue vs Publish
-|Aspect|Point-to-point (queue)|Publish/subscribe (topic)|
-|---|---|---|
-|Delivery|Each message goes to exactly one consumer|Each message goes to every subscriber|
-|Typical goal|Distribute work among workers|Broadcast an event to many interested services|
-|Consumers|Compete for messages from the same queue|Each subscriber gets its own copy|
-|Example|A pool of workers resizing uploaded images|"Order placed" received by email, inventory and analytics services|
-|Tools|SQS, RabbitMQ queues|SNS, Google Pub/Sub, RabbitMQ exchanges, Kafka topics with consumer groups|
+| Aspect       | Point-to-point (queue)                            | Publish/subscribe (topic)                                                  |
+| ------------ | ------------------------------------------------- | -------------------------------------------------------------------------- |
+| Delivery     | Each message goes to exactly one consumer         | Each message goes to every subscriber                                      |
+| Typical goal | Distribute work among workers                     | Broadcast an event to many interested services                             |
+| Consumers    | Compete for messages from the same queue (random) | Each subscriber gets its own copy (predefined)                             |
+| Example      | A pool of workers resizing uploaded images        | "Order placed" received by email, inventory and analytics services         |
+| Tools        | SQS, RabbitMQ queues                              | SNS, Google Pub/Sub, RabbitMQ exchanges, Kafka topics with consumer groups |
 
 ## Message Queue vs Event Streaming
 | Aspect              | Traditional queue (RabbitMQ, SQS)                         | Event streaming (Kafka)                                                                        |

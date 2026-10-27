@@ -3,14 +3,22 @@ To improve database access performance, databases use specialized data structure
 The choice between them depends on the workload, particularly the balance between read-heavy and write-heavy operations.
 
 ## B-Tree
-B-Trees are a well-established data structure used by many relational databases, including MySQL and PostgreSQL, for indexes. They maintain data in a balanced, ordered tree structure, allowing efficient searches, insertions, and deletions.
+B-Trees are a well-established data structure used by many relational databases, including MySQL and PostgreSQL, for indexes. They maintain data in a balanced, ordered tree structure, allowing efficient searches/reads.
 
 Each node contains sorted keys and pointers to child nodes. Starting from the root, the database compares the search key with the keys in the current node and follows the appropriate pointer until it reaches the target data.
 
-B-Trees are well suited for **OLTP (Online Transaction Processing)** workloads that require frequent point lookups, updates, and range queries. Their balanced structure keeps the number of tree levels relatively small, enabling efficient reads.
+B-Trees are well suited for **OLTP (Online Transaction Processing)** workloads that require frequent point lookups and range queries. Their balanced structure keeps the number of tree levels relatively small, enabling efficient reads.
 
 However, writes can be expensive. Inserting, updating, or deleting entries may require modifying existing pages, splitting nodes, updating pointers, or rebalancing the tree. These operations can result in random disk I/O and additional write overhead.
+### Read
+The search key is compared against the keys in the root node. If it is smaller than a key, the pointer to that key’s left child is followed. If it is larger than all keys, the rightmost pointer is followed. This repeats down the tree until the key is found or a leaf is reached. Because nodes hold many sorted keys, each step is a binary search within the node. The tree height is O(log n), so a lookup costs O(log n).
+### Write
+The read process finds the node where the value belongs. If the node has space, the value is inserted in sorted position. If the node has no space (**overflow**), its median key is found and promoted to the parent, and the node splits into two nodes around that median. If the parent overflows too, the split repeats upward.
+### Deletion
+The read process finds the key, and it is removed from the node. If the node falls below the minimum key count (**underflow**), it borrows a key from a sibling through the parent. If the sibling has no spare keys either, the two nodes merge, and the parent key that separated them is demoted into the merged node. This can cascade upward.
 
+**Note**:
+In case of update there are two possibilities. If the key value (which determines the sort) is not being updated then the simple read operation id done and the non-key value is updated. In case of updating the key itself (such as an ID), deletion is done followed by fresh write/insert.
 ## LSM-Tree
 LSM-Trees are widely used in write-intensive storage engines and databases, including Apache Cassandra and RocksDB. Instead of immediately updating an on-disk tree for every write, they accumulate writes in memory and periodically flush them to disk.
 
@@ -19,6 +27,12 @@ When a write arrives, it is typically recorded in a **write-ahead log (WAL)** fo
 This approach converts many small, potentially random writes into larger, sequential disk writes, improving write throughput.
 
 However, reads can be more expensive because the requested data may exist in the MemTable, the most recent SSTables, or older SSTables. The database may need to check multiple locations before finding the correct value.
+### Read
+The key is first looked up in the memtable (and any immutable memtables waiting to be flushed). If it is found there, that value is returned. Otherwise the SSTables are searched from newest to oldest. For each one, its Bloom filter is checked first. A “definitely not present” answer skips the file without any disk access. A “possibly present” answer sends the lookup through the file’s sparse index to the right block, which is read and searched. The first match is the latest version, so the search stops there. A false positive costs one wasted block read. Level 0 files may overlap and must all be checked, while each deeper level needs at most one file.
+### Write
+The write is first appended to the write-ahead log (WAL) for crash safety and then inserted into the memtable, a sorted in-memory structure. No existing data is modified, so an update is just a newer version of the key. When the memtable reaches its size limit, it becomes immutable and is flushed to disk as a new SSTable at Level 0. Its Bloom filter and index are built during the flush. In the background, **compaction** merges SSTables into larger sorted files at deeper levels, discarding overwritten versions and building a fresh Bloom filter for each new file.
+### Deletion
+A delete is a normal write that records a **tombstone** for the key. A read that meets the tombstone stops and reports the key as not found, even if older SSTables still hold the value. Bloom filters cannot remove entries, so the key stays in the filters of the old files and in the filter of the file holding the tombstone. Space is reclaimed only during compaction. When the merge reaches the bottom level, where no older data can remain below, both the tombstone and the values it shadowed are dropped, and the new files get fresh Bloom filters without that key.
 
 ### Bloom Filters
 Bloom filters help reduce unnecessary disk reads by probabilistically checking whether an SSTable might contain a particular key.

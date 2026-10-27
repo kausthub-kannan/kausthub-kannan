@@ -2,23 +2,6 @@
 
 **Autoscaling** is the automatic adjustment of resources in response to demand. It is the _reactive_ half of capacity management, while planning and forecasting are the _proactive_ half. You need both: autoscaling handles the variation you can't predict, and planning handles the limits, lead times and costs that autoscaling can't.
 
-```
-                  ┌────────────────────────────────────────────┐
-   Forecast  ───► │ Capacity planning (weeks to months ahead)  │ ─► budget, quotas, reservations,
-   (growth,       │  - headroom targets, limits, lead times    │    architecture changes
-   launches)      └────────────────────────────────────────────┘
-
-                  ┌────────────────────────────────────────────┐
-   Live load ───► │ Autoscaling (seconds to minutes)           │ ─► add/remove instances, pods,
-   (metrics)      │  - react to actual demand                  │    concurrency
-                  └────────────────────────────────────────────┘
-
-                  ┌────────────────────────────────────────────┐
-   Overload  ───► │ Protection (milliseconds)                  │ ─► load shedding, rate limits,
-   (spikes)       │  - back-pressure, graceful degradation     │    degradation (see resilience notes)
-                  └────────────────────────────────────────────┘
-```
-
 |Layer|Timescale|Question it answers|
 |---|---|---|
 |Capacity planning|Weeks to months|"Will we have enough, and what will it cost?"|
