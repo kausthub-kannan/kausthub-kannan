@@ -11,14 +11,10 @@
             "id": "189f92864f3f1ae0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Techie Notes/DSA Quickdraw.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "DSA Quickdraw"
+              "title": "New tab"
             }
           }
         ]
@@ -189,11 +185,24 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "189f92864f3f1ae0",
+  "active": "019f94825ee2a94e",
   "lastOpenFiles": [
-    "Pasted image 20261026205309.png",
-    "Techie Notes/System Design/Fundamentals/Reliability/Autoscaling.md",
+    "assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC.excalidraw",
+    "assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC 1.excalidraw",
+    "Asymmetric Encryption.excalidraw",
     "Techie Notes/DSA Quickdraw.md",
+    "Techie Notes/DSA/Arrays.md",
+    "Techie Notes/DSA/DP.md",
+    "Techie Notes/DSA/Trees.md",
+    "Techie Notes/DSA/Graphs.md",
+    "Techie Notes/DSA/Backtracking.md",
+    "Pasted image 20261026205309.png",
+    "Techie Notes/DSA/Binary Serach.md",
+    "Techie Notes/DSA/Heap.md",
+    "Techie Notes/DSA/Stacks.md",
+    "Techie Notes/DSA/Sliding Window.md",
+    "Techie Notes/DSA",
+    "Techie Notes/System Design/Fundamentals/Reliability/Autoscaling.md",
     "Techie Notes/System Design/Fundamentals/Reliability/Multi Region Failover.md",
     "Techie Notes/DSA Roadmap - Temporary.md",
     "Techie Notes/System Design/Fundamentals/Reliability/Disaster Recovery.md",
@@ -212,20 +221,8 @@
     "assets/excalidraw/System Design/Fundamentals/Databases/4NF.excalidraw",
     "assets/excalidraw/System Design/Fundamentals/Databases/3NF.excalidraw",
     "assets/excalidraw/System Design/Fundamentals/Databases/2NF.excalidraw",
-    "assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC.excalidraw",
-    "Log Based CDC.excalidraw",
     "assets/excalidraw/System Design/Fundamentals/Databases/1NF.md",
-    "Techie Notes/System Design/Fundamentals/Networking/Web Sockets.md",
-    "Techie Notes/System Design/Fundamentals/Security/Session Managements.md",
     "assets/excalidraw/System Design/Fundamentals/Networking/API.excalidraw",
-    "assets/excalidraw/System Design/Fundamentals/Networking/API.md",
-    "assets/excalidraw/System Design/Fundamentals/Security/Asymmetric Encryption.excalidraw",
-    "assets/excalidraw/System Design/Fundamentals/Security/Asymmetric Encryption.md",
-    "assets/excalidraw/System Design/Fundamentals/Untitled.md",
-    "Techie Notes/System Design/Fundamentals/Message Queues.md",
-    "Techie Notes/System Design/Fundamentals/Caching.md",
-    "assets/excalidraw/System Design/Fundamentals/Security/TLS Handshake.md",
-    "assets/excalidraw/System Design/Fundamentals/Networking/Scaling Web Sockets.md",
     "assets/header.jpg",
     "assets/dp.jpg"
   ]
