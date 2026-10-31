@@ -45,14 +45,14 @@ Pick **meaningful demand metrics** that map to resource use:
 Then derive the **resource cost per unit**, for example "1 vCPU handles about 150 RPS of the product API at p99 under 200 ms."
 
 ### Forecasting methods
-|Method|Description|Good for|
-|---|---|---|
-|**Trend extrapolation**|Linear or exponential fit on historical growth|Steady growth|
-|**Seasonality-aware time series**|Models daily, weekly and yearly cycles (Holt-Winters, Prophet, ARIMA)|Cyclical demand|
-|**Business-driven (bottom-up)**|Convert the sales, marketing and product plan into load (for example "10x users after launch")|Launches, campaigns, new markets|
-|**Event-based**|Specific known peaks (sales events, festivals, tax deadlines, sports finals, exam results)|Predictable spikes|
-|**Scenario / what-if**|Best, expected and worst cases|Uncertain situations|
-|**Queueing and performance models**|Use theory to predict behaviour as utilisation rises|Understanding non-linear effects|
+| Method                              | Description                                                                                    | Good for                         |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------- | -------------------------------- |
+| **Trend extrapolation**             | Linear or exponential fit on historical growth                                                 | Steady growth                    |
+| **Seasonality-aware time series**   | Models daily, weekly and yearly cycles (Holt-Winters, Prophet, ARIMA)                          | Cyclical demand                  |
+| **Business-driven (bottom-up)**     | Convert the sales, marketing and product plan into load (for example "10x users after launch") | Launches, campaigns, new markets |
+| **Event-based**                     | Specific known peaks (sales events, festivals, tax deadlines, sports finals, exam results)     | Predictable spikes               |
+| **Scenario / what-if**              | Best, expected and worst cases                                                                 | Uncertain situations             |
+| **Queueing and performance models** | Use theory to predict behaviour as utilisation rises                                           | Understanding non-linear effects |
 
 - Use **peak** load, not just averages. You provision for the peak (or the percentile you commit to).
 - Include **growth in data and per-user activity**, not only user count.
@@ -300,12 +300,6 @@ Removing capacity can break things if done carelessly.
 ## Scaling Whole 
 A system scales only as far as its **least scalable dependency.** Autoscaling one tier can simply shift the bottleneck, or push the problem downstream.
 
-```
-Users -> CDN -> Load balancer -> API (autoscaled) -> Services -> Database / Cache / Queue / 3rd-party APIs
-                                    ▲                              ▲
-                          scales easily                    often the real limit
-```
-
 - **Scale tiers in proportion.** Doubling API replicas without extra database capacity just moves the failure.
 - **Know downstream limits** (connections, rate limits, third-party quotas) and enforce them with bulkheads, concurrency caps, rate limiting and queues.
 - **Watch for retry amplification:** when a tier slows down, upstream retries add load, which autoscaling then chases. Apply timeouts, retry budgets and circuit breakers (see the resilience patterns notes).
@@ -314,24 +308,24 @@ Users -> CDN -> Load balancer -> API (autoscaled) -> Services -> Database / Cach
 - **Observability scales with traffic too,** so plan its capacity and cost.
 
 ## Spikes and Special Events
-|Scenario|Area|Action|Details|
-|---|---|---|---|
-|**Predictable events** (sales, festivals, launches, exams)|1. Forecast|Estimate the peak|Use past events and business expectations, with a safety multiple.|
-||2. Load test|Test at or above the forecast|Include the failure scenarios.|
-||3. Pre-scale|Scale before the event|Use scheduled or manual scaling instead of reactive scaling. Raise minimums, warm caches, pre-warm load balancers where required, and warm JIT and connection pools.|
-||4. Quotas|Raise limits early|Raise quotas and reservations with cloud and third-party providers.|
-||5. Change freeze|Freeze risky changes|Apply the freeze around the event.|
-||6. Degradation levers|Prepare fallbacks|Feature flags to turn off expensive features, static fallbacks, queue-based ordering, and a virtual waiting room for extreme demand (Queue-it, Cloudflare Waiting Room).|
-||7. War room|Staff it|Clear roles, dashboards and runbooks.|
-||8. Scale down|Reduce deliberately|Keep the increased capacity long enough to absorb tail traffic.|
-|**Unpredictable spikes** (viral content, attacks, retries)|Edge protection|Filter at the edge|CDN caching, WAF, DDoS protection, bot management, rate limiting.|
-||Load shedding|Protect the core|Load shedding and back-pressure (see the resilience notes).|
-||Reactive scaling|Scale fast|Fast reactive scaling, with headroom and leading indicators.|
-||Traffic differentiation|Prioritise users|Protect authenticated and paying users, and degrade anonymous or low-priority traffic first.|
-||Surge vs attack|Tell them apart|Scaling up to absorb a DDoS can be very expensive. Cap the maximum and block malicious traffic at the edge.|
-|**Thundering herd and cold starts**|Cache stampede|Prevent simultaneous misses|Many requests miss at once and hit the database. Use request coalescing, jittered TTLs, early refresh and locks.|
-||Mass restart or reconnect|Stagger reconnects|After an outage, all clients reconnect at once. Use jittered backoff and gradual ramp-up (slow start in load balancers).|
-||Cold instances|Warm them up|Empty caches and unoptimised code mean less load handled at first. Use slow-start and warm-up routines.|
+| Scenario                                                   | Area                      | Action                        | Details                                                                                                                                                                  |
+| ---------------------------------------------------------- | ------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Predictable events** (sales, festivals, launches, exams) | 1. Forecast               | Estimate the peak             | Use past events and business expectations, with a safety multiple.                                                                                                       |
+|                                                            | 2. Load test              | Test at or above the forecast | Include the failure scenarios.                                                                                                                                           |
+|                                                            | 3. Pre-scale              | Scale before the event        | Use scheduled or manual scaling instead of reactive scaling. Raise minimums, warm caches, pre-warm load balancers where required, and warm JIT and connection pools.     |
+|                                                            | 4. Quotas                 | Raise limits early            | Raise quotas and reservations with cloud and third-party providers.                                                                                                      |
+|                                                            | 5. Change freeze          | Freeze risky changes          | Apply the freeze around the event.                                                                                                                                       |
+|                                                            | 6. Degradation levers     | Prepare fallbacks             | Feature flags to turn off expensive features, static fallbacks, queue-based ordering, and a virtual waiting room for extreme demand (Queue-it, Cloudflare Waiting Room). |
+|                                                            | 7. War room               | Staff it                      | Clear roles, dashboards and runbooks.                                                                                                                                    |
+|                                                            | 8. Scale down             | Reduce deliberately           | Keep the increased capacity long enough to absorb tail traffic.                                                                                                          |
+| **Unpredictable spikes** (viral content, attacks, retries) | Edge protection           | Filter at the edge            | CDN caching, WAF, DDoS protection, bot management, rate limiting.                                                                                                        |
+|                                                            | Load shedding             | Protect the core              | Load shedding and back-pressure                                                                                                                                          |
+|                                                            | Reactive scaling          | Scale fast                    | Fast reactive scaling, with headroom and leading indicators.                                                                                                             |
+|                                                            | Traffic differentiation   | Prioritise users              | Protect authenticated and paying users, and degrade anonymous or low-priority traffic first.                                                                             |
+|                                                            | Surge vs attack           | Tell them apart               | Scaling up to absorb a DDoS can be very expensive. Cap the maximum and block malicious traffic at the edge.                                                              |
+| **Thundering herd and cold starts**                        | Cache stampede            | Prevent simultaneous misses   | Many requests miss at once and hit the database. Use request coalescing, jittered TTLs, early refresh and locks.                                                         |
+|                                                            | Mass restart or reconnect | Stagger reconnects            | After an outage, all clients reconnect at once. Use jittered backoff and gradual ramp-up (slow start in load balancers).                                                 |
+|                                                            | Cold instances            | Warm them up                  | Empty caches and unoptimised code mean less load handled at first. Use slow-start and warm-up routines.                                                                  |
 
 ## Cost Optimisation
 |Lever|Description|

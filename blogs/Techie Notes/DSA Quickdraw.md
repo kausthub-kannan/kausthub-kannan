@@ -189,8 +189,8 @@ Circular array → loop `i` over `0..2n-1`, use `a[i % n]`, push only when `i < 
 
 ⏱ Time `O(n)` · Space `O(n)`
 
-- [ ] [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/) · M — Base (circular)
-- [ ] [Online Stock Span](https://leetcode.com/problems/online-stock-span/) · M — Looks **backward** and is online: stack of `(price, span)`; pop while `top.price ≤ price`, accumulating spans
+- [x] [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/) · M — Base (circular)
+- [x] [Online Stock Span](https://leetcode.com/problems/online-stock-span/) · M — Looks **backward** and is online: stack of `(price, span)`; pop while `top.price ≤ price`, accumulating spans
 
 ### ST2 Greedy Monotonic Stack (Lexicographic)
 
@@ -205,8 +205,8 @@ Circular array → loop `i` over `0..2n-1`, use `a[i % n]`, push only when `i < 
 
 ⏱ Time `O(n)` · Space `O(n)`
 
-- [ ] [Remove K Digits](https://leetcode.com/problems/remove-k-digits/) · M — Base: budget `k`
-- [ ] [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) · M — No budget; instead pop `top` only if `top > c` **and** `top` appears again later (`last[top] > i`). Skip chars already in stack (`inStack` set)
+- [x] [Remove K Digits](https://leetcode.com/problems/remove-k-digits/) · M — Base: budget `k`
+- [x] [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/) · M — No budget; instead pop `top` only if `top > c` **and** `top` appears again later (`last[top] > i`). Skip chars already in stack (`inStack` set)
 
 ### ST3 Stack Simulation
 
@@ -219,8 +219,8 @@ On `[` push `(currentString, k)`; on `]` pop and repeat; build multi-digit `k` w
 
 ⏱ Time `O(output length)` · Space `O(n)`
 
-- [ ] [Decode String](https://leetcode.com/problems/decode-string/) · M — Base: nested contexts
-- [ ] [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/) · M — Collide only when `top > 0` and new `< 0`; compare `abs`, equal → both vanish; keep popping while the new one wins
+- [x] [Decode String](https://leetcode.com/problems/decode-string/) · M — Base: nested contexts
+- [x] [Asteroid Collision](https://leetcode.com/problems/asteroid-collision/) · M — Collide only when `top > 0` and new `< 0`; compare `abs`, equal → both vanish; keep popping while the new one wins
 
 ---
 
@@ -241,8 +241,8 @@ Run the boundary search twice: first index `≥ target`, and first index `> targ
 
 ⏱ Time `O(log n)` · Space `O(1)`
 
-- [ ] [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) · M — Base: two boundaries
-- [ ] [Find Peak Element](https://leetcode.com/problems/find-peak-element/) · M — Array isn't sorted; predicate is `nums[mid] > nums[mid+1]` ("we are on a descending slope"). A peak always exists on the uphill side
+- [x] [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) · M — Base: two boundaries
+- [x] [Find Peak Element](https://leetcode.com/problems/find-peak-element/) · M — Array isn't sorted; predicate is `nums[mid] > nums[mid+1]` ("we are on a descending slope"). A peak always exists on the uphill side
 
 ### BS2 Binary Search on the Answer
 
@@ -263,8 +263,8 @@ Run the boundary search twice: first index `≥ target`, and first index `> targ
 ⚠️ Bounds matter: `lo` below `max(weights)` makes the greedy check meaningless.
 ⏱ Time `O(n log(sum))` · Space `O(1)`
 
-- [ ] [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/) · M — Base
-- [ ] [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/) · M — Answer = a day; `feasible(day)` counts runs of `k` adjacent bloomed flowers ≥ `m`. Return `-1` upfront if `m*k > n` (use `long`). Bounds `min..max(bloomDay)`
+- [x] [Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/) · M — Base
+- [x] [Minimum Number of Days to Make m Bouquets](https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/) · M — Answer = a day; `feasible(day)` counts runs of `k` adjacent bloomed flowers ≥ `m`. Return `-1` upfront if `m*k > n` (use `long`). Bounds `min..max(bloomDay)`
 
 ---
 
@@ -281,9 +281,9 @@ Slow moves 1, fast moves 2. When they meet, reset one pointer to head; advance b
 
 ⏱ Time `O(n)` · Space `O(1)`
 
-- [ ] [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) · M — Base
-- [ ] [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) · E — Fast/slow finds the middle → reverse the second half → compare (optionally restore)
-- [ ] [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/) · E — No fast/slow; pointers switch to the other head at the end, so both walk `lenA+lenB` and meet at the intersection (or both hit `null`)
+- [x] [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/) · M — Base
+- [x] [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/) · E — Fast/slow finds the middle → reverse the second half → compare (optionally restore)
+- [x] [Intersection of Two Linked Lists](https://leetcode.com/problems/intersection-of-two-linked-lists/) · E — No fast/slow; pointers switch to the other head at the end, so both walk `lenA+lenB` and meet at the intersection (or both hit `null`)
 
 ### LL2 Dummy Head and Pointer Rewiring
 
@@ -298,15 +298,15 @@ If `cur.val == cur.next.val`, skip every node with that value and set `prev.next
 
 ⏱ Time `O(n)` · Space `O(1)`
 
-- [ ] [Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/) · M — Base
-- [ ] [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/) · M — `prev.next=b; a.next=b.next; b.next=a; prev=a` per pair
-- [ ] [Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/) · M — Two chains (odd/even) built in one pass; finally `odd.next = evenHead`
+- [x] [Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/) · M — Base
+- [x] [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/) · M — `prev.next=b; a.next=b.next; b.next=a; prev=a` per pair
+- [x] [Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/) · M — Two chains (odd/even) built in one pass; finally `odd.next = evenHead`
 
 ### LL3 Merge Sort on a List
 
 > **Recognition:** Sort a linked list in `O(n log n)`.
 
-- [ ] **Base problem:** [Sort List](https://leetcode.com/problems/sort-list/) · M
+- [x] **Base problem:** [Sort List](https://leetcode.com/problems/sort-list/) · M
 Find the middle (fast/slow), cut the list, sort each half recursively, merge two sorted lists.
 
 > 🔑 Lists merge in `O(1)` extra space and can't be random-accessed, so merge sort beats quick sort here.
@@ -322,7 +322,7 @@ Find the middle (fast/slow), cut the list, sort each half recursively, merge two
 
 > **Recognition:** The answer at a node is combined from answers of its children.
 
-- [ ] **Base problem:** [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) · M
+- [x] **Base problem:** [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) · M
 Return the node if `root` is null/`p`/`q`. Recurse left and right. If both return non-null, `root` is the LCA; otherwise return whichever is non-null.
 
 > 🔑 A non-null return means "p or q (or their LCA) lives below me".
@@ -331,7 +331,7 @@ Return the node if `root` is null/`p`/`q`. Recurse left and right. If both retur
 
 ### TR2 Root-to-Leaf Path DFS with Backtracking
 
-- [ ] **Base problem:** [Path Sum II](https://leetcode.com/problems/path-sum-ii/) · M
+- [x] **Base problem:** [Path Sum II](https://leetcode.com/problems/path-sum-ii/) · M
 Append the node, subtract from the target; at a leaf with remaining `== 0`, **copy** the path; recurse; pop on return.
 
 > 🔑 One shared path list + undo on exit = no per-call copies.
@@ -341,7 +341,7 @@ Append the node, subtract from the target; at a leaf with remaining `== 0`, **co
 
 ### TR3 BST Navigation and Deletion
 
-- [ ] **Base problem:** [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/) · M
+- [x] **Base problem:** [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/) · M
 Go left/right by comparison. On match: 0 or 1 child → return the other child; 2 children → replace with the in-order successor (min of right subtree) and delete that successor from the right subtree.
 
 > 🔑 In-order successor keeps the BST ordering; recursion returns the new subtree root so parents relink automatically.
@@ -350,7 +350,7 @@ Go left/right by comparison. On match: 0 or 1 child → return the other child; 
 
 ### TR4 In-Place Restructuring
 
-- [ ] **Base problem:** [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/) · M
+- [x] **Base problem:** [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/) · M
 For each node with a left child: find the rightmost node of the left subtree, attach `node.right` there, move `left` to `right`, null the left, step right.
 
 > 🔑 The rightmost node of the left subtree is the pre-order predecessor of `node.right`.
@@ -368,15 +368,15 @@ Standard level order with a direction flag; reverse (or `appendleft`) on alterna
 
 ⏱ Time `O(n)` · Space `O(w)` (max width)
 
-- [ ] [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) · M — Base
-- [ ] [Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/) · M — Perfect tree: link `left.next = right` and `right.next = node.next.left`, using the already-built `next` of the level above → `O(1)` space
-- [ ] [Vertical Order Traversal of a Binary Tree](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/) · H — Tag nodes `(col, row, val)` via BFS/DFS; sort by col, then row, then value (ties at the same cell sort by value). `O(n log n)`
+- [x] [Binary Tree Zigzag Level Order Traversal](https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/) · M — Base
+- [x] [Populating Next Right Pointers in Each Node](https://leetcode.com/problems/populating-next-right-pointers-in-each-node/) · M — Perfect tree: link `left.next = right` and `right.next = node.next.left`, using the already-built `next` of the level above → `O(1)` space
+- [x] [Vertical Order Traversal of a Binary Tree](https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/) · H — Tag nodes `(col, row, val)` via BFS/DFS; sort by col, then row, then value (ties at the same cell sort by value). `O(n log n)`
 
 ### TR6 Tree as Graph (Parent Map + BFS)
 
 > **Recognition:** Distances from a node in all directions, including upward.
 
-- [ ] **Base problem:** [All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/) · M
+- [x] **Base problem:** [All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/) · M
 DFS to record `parent[node]`; BFS from `target` over `{left, right, parent}` with a visited set; collect nodes at level `K`.
 
 > 🔑 Adding parent edges turns the tree into an undirected graph, so ordinary BFS gives distances.
@@ -385,7 +385,7 @@ DFS to record `parent[node]`; BFS from `target` over `{left, right, parent}` wit
 
 ### TR7 Exploit Complete-Tree Structure
 
-- [ ] **Base problem:** [Count Complete Tree Nodes](https://leetcode.com/problems/count-complete-tree-nodes/) · E
+- [x] **Base problem:** [Count Complete Tree Nodes](https://leetcode.com/problems/count-complete-tree-nodes/) · E
 Compute leftmost depth and rightmost depth. Equal → perfect tree, `2^h - 1`. Otherwise `1 + count(left) + count(right)`.
 
 > 🔑 In a complete tree at least one child subtree is perfect, so only one side recurses deeply.
@@ -408,13 +408,13 @@ Heap keyed by `(-count, word)` so ties break alphabetically; pop `k`.
 ⚠️ Tie-breaking order must be encoded in the key (or comparator).
 ⏱ Time `O(n log k)` with a size-k heap, `O(n log n)` with a full heap · Space `O(n)`
 
-- [ ] [Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/) · M — Base
-- [ ] [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/) · M — Output all chars grouped by count desc; bucket by frequency gives `O(n)`
-- [ ] [Reorganize String](https://leetcode.com/problems/reorganize-string/) · M — Greedy: max-heap; repeatedly take the two most frequent distinct chars (or hold the previous char out one round). Impossible if `max count > (n+1)/2`
+- [x] [Top K Frequent Words](https://leetcode.com/problems/top-k-frequent-words/) · M — Base
+- [x] [Sort Characters By Frequency](https://leetcode.com/problems/sort-characters-by-frequency/) · M — Output all chars grouped by count desc; bucket by frequency gives `O(n)`
+- [x] [Reorganize String](https://leetcode.com/problems/reorganize-string/) · M — Greedy: max-heap; repeatedly take the two most frequent distinct chars (or hold the previous char out one round). Impossible if `max count > (n+1)/2`
 
 ### HP2 K-Way Merge / Kth Smallest
 
-- [ ] **Base problem:** [Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/) · M
+- [x] **Base problem:** [Kth Smallest Element in a Sorted Matrix](https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/) · M
 Treat each row as a sorted list. Push `(value, r, c)` for each row's first element in a min-heap; pop `k` times, pushing the right neighbour each time.
 
 > 🔑 The heap always holds the smallest unseen element of each list.
@@ -439,10 +439,10 @@ All patterns share the template: **choose → recurse → undo**. They differ in
 
 ⏱ Time `O(C(n,k)·k)` · Space `O(k)`
 
-- [ ] [Combinations](https://leetcode.com/problems/combinations/) · M — Base
-- [ ] [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/) · M — Numbers 1–9, exactly `k` of them, sum `n`; prune when the sum exceeds `n`
-- [ ] [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/) · M — Binary decision per character (letters: lower/upper; digits: one option); no start-index loop
-- [ ] [Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/) · M — Include/skip each string; keep a bitmask of used letters, skip a string that overlaps or has internal duplicates
+- [x] [Combinations](https://leetcode.com/problems/combinations/) · M — Base
+- [x] [Combination Sum III](https://leetcode.com/problems/combination-sum-iii/) · M — Numbers 1–9, exactly `k` of them, sum `n`; prune when the sum exceeds `n`
+- [x] [Letter Case Permutation](https://leetcode.com/problems/letter-case-permutation/) · M — Binary decision per character (letters: lower/upper; digits: one option); no start-index loop
+- [x] [Maximum Length of a Concatenated String with Unique Characters](https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/) · M — Include/skip each string; keep a bitmask of used letters, skip a string that overlaps or has internal duplicates
 
 ### BT2 Permutations (Used Set)
 
@@ -453,8 +453,8 @@ Sort; `used[]`; at each depth try every unused element; **skip** `nums[i] == num
 
 ⏱ Time `O(n · n!)` · Space `O(n)`
 
-- [ ] [Permutations II](https://leetcode.com/problems/permutations-ii/) · M — Base: dedupe
-- [ ] [Beautiful Arrangement](https://leetcode.com/problems/beautiful-arrangement/) · M — Fill positions `1..n`; number `i` allowed at `pos` only if `i % pos == 0 or pos % i == 0`. Counts instead of listing; pruning does the work
+- [x] [Permutations II](https://leetcode.com/problems/permutations-ii/) · M — Base: dedupe
+- [x] [Beautiful Arrangement](https://leetcode.com/problems/beautiful-arrangement/) · M — Fill positions `1..n`; number `i` allowed at `pos` only if `i % pos == 0 or pos % i == 0`. Counts instead of listing; pruning does the work
 
 ### BT3 String Segmentation and Expression Building
 
@@ -465,9 +465,9 @@ Sort; `used[]`; at each depth try every unused element; **skip** `nums[i] == num
 
 ⏱ Time bounded by `3^4` splits · Space `O(1)`
 
-- [ ] [Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/) · M — Base: fixed number of parts
-- [ ] [Word Break II](https://leetcode.com/problems/word-break-ii/) · H — Try each dictionary-word prefix; **memoise** `dfs(start)` → list of sentences (otherwise exponential blow-up)
-- [ ] [Expression Add Operators](https://leetcode.com/problems/expression-add-operators/) · H — Choose the next number slice and operator; track `value` and `last` operand so `*` is applied as `value - last + last*cur`. Skip numbers with leading zeros; use `long`
+- [x] [Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/) · M — Base: fixed number of parts
+- [x] [Word Break II](https://leetcode.com/problems/word-break-ii/) · H — Try each dictionary-word prefix; **memoise** `dfs(start)` → list of sentences (otherwise exponential blow-up)
+- [x] [Expression Add Operators](https://leetcode.com/problems/expression-add-operators/) · H — Choose the next number slice and operator; track `value` and `last` operand so `*` is applied as `value - last + last*cur`. Skip numbers with leading zeros; use `long`
 
 ### BT4 Bucket Partitioning
 
@@ -481,12 +481,12 @@ Sort; `used[]`; at each depth try every unused element; **skip** `nums[i] == num
 💡 Bitmask DP alternative: `dp[mask]` = leftover in the current bucket.
 ⏱ Time `O(k · 2^n)` with memo, worst naive `O(k^n)` · Space `O(n)`
 
-- [ ] [Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/) · M — Base: general `k`
-- [ ] [Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/) · M — Same with `k = 4` (side = perimeter/4)
+- [x] [Partition to K Equal Sum Subsets](https://leetcode.com/problems/partition-to-k-equal-sum-subsets/) · M — Base: general `k`
+- [x] [Matchsticks to Square](https://leetcode.com/problems/matchsticks-to-square/) · M — Same with `k = 4` (side = perimeter/4)
 
 ### BT5 Grid Path with Visit-Undo
 
-- [ ] **Base problem:** [Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold/) · M
+- [x] **Base problem:** [Path with Maximum Gold](https://leetcode.com/problems/path-with-maximum-gold/) · M
 Start DFS from every non-zero cell. Mark the cell visited (set to 0), explore 4 directions, take the best, **restore** the cell.
 
 > 🔑 Restoring on exit lets other paths reuse the cell.
@@ -495,7 +495,7 @@ Start DFS from every non-zero cell. Mark the cell visited (set to 0), explore 4 
 
 ### BT6 Constraint Satisfaction
 
-- [ ] **Base problem:** [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/) · H
+- [x] **Base problem:** [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/) · H
 Keep row/column/box bitmasks. Pick an empty cell (optionally the one with fewest candidates), try digits, recurse, undo; return `true` early on success.
 
 > 🔑 Fail fast: constraint masks make invalid placements `O(1)` to reject.

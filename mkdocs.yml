@@ -6,7 +6,7 @@ site_description: Personal website and blogs — ML, Agents, System Design.
 # Project-pages URL for kausthub-kannan/kausthub-kannan.
 # If you switch to a custom domain or a *.github.io user site, update this.
 site_url: https://kausthub-kannan.github.io/kausthub-kannan/
-repo_url: https://github.com/kausthub-kannan/kausthub-kannan
+# repo_url intentionally omitted — no GitHub link in the header.
 
 docs_dir: blogs
 
@@ -14,6 +14,10 @@ theme:
   name: material
   logo: assets/dp.jpg
   favicon: assets/dp.jpg
+  # Google Fonts: Sulphur Point for body text, Roboto Mono for code.
+  font:
+    text: Sulphur Point
+    code: Roboto Mono
   # Single dark scheme so the navy background + white text always apply.
   palette:
     - scheme: slate
@@ -21,8 +25,6 @@ theme:
       accent: red
   features:
     - navigation.sections
-    - search.suggest
-    - search.highlight
     - content.code.copy
 
 markdown_extensions:
@@ -42,6 +44,9 @@ extra_css:
   - assets/stylesheets/extra.css
 
 plugins:
+  # Built-in search: powers the header search bar. Must be listed
+  # explicitly — once `plugins:` is declared, MkDocs' default plugin set
+  # (i.e. search alone) is disabled.
   - search
   - awesome-nav
   - excalidraw

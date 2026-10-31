@@ -18,11 +18,25 @@
   --md-code-fg-color: #ffffff;
 }
 
-/* Section headers in signal red */
+/* ------------------------------------------------------------------ *
+ * Full-page base color for the site.                                  */
+body {
+  background-color: #0F0E0E;
+}
+
+/* Section headers in signal red — weighted to Sulphur Point's Bold
+ * (700) face. The font only ships 300/400/700, and Material's default
+ * heading weights (400/500) would otherwise resolve to the regular cut. */
 .md-typeset h1,
 .md-typeset h2,
 .md-typeset h3, 
 .md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  color: #d9361e;
+  font-weight: 700;
+}
+
 .md-typeset a {
   color: #d9361e;
 }
@@ -40,6 +54,38 @@
   color: #ff0000;
 }
 
+/* Top bar in a frosted-glass finish: translucent charcoal (the site's
+ * #0F0E0E at 0.6 alpha) with a backdrop blur, so scrolled pages smear
+ * softly underneath. Scoped to the slate scheme (the only one enabled)
+ * for extra specificity, so it also overrides the theme's scrolled
+ * drop shadow (.md-header--shadow) and keeps the bar flat glass. */
+[data-md-color-scheme="slate"] .md-header {
+  background: rgba(15, 14, 14, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+}
+
+/* Topbar logo as an oversized circular avatar.
+ * Default is a 1.2rem-high image with its natural rectangle; this crops
+ * dp.jpg into a ~2rem circle (object-fit instead of squashing). Scoped
+ * to the header button only — the nav-drawer logo (< 76.25em) is a
+ * separate .md-nav__title .md-logo element and is left untouched. */
+.md-header__button.md-logo {
+  margin: 0;
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+}
+
+.md-header__button.md-logo img {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* Same, with specificity matching the theme's own rules so the override
  * wins for the active page/section in the sidebar and the right-hand
  * table of contents. */
@@ -49,19 +95,6 @@
 .md-nav__item .md-nav__link:focus,
 .md-nav--secondary .md-nav__link--active {
   color: #ff0000;
-}
-
-/* Round, slightly larger header logo */
-.md-header__button.md-logo {
-  margin: 0.1rem;
-  padding: 0.1rem;
-}
-
-.md-header__button.md-logo img {
-  border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
-  object-fit: cover;
 }
 
 /* Excalidraw diagrams (mkdocs-excalidraw).
