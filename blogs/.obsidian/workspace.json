@@ -13,26 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Techie Notes/System Design/Fundamentals/Reliability/Disaster Recovery.md",
+                "file": "Techie Notes/System Design/Fundamentals/Networking/Web Sockets.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Disaster Recovery"
+              "title": "Web Sockets"
             }
           },
           {
-            "id": "cf7499baf23c4ffb",
+            "id": "31098f94d1a5de7e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Techie Notes/System Design/Tackling System Design Interviews.md",
+                "file": "Techie Notes/System Design/Fundamentals/Reliability/Resilience Patterns.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tackling System Design Interviews"
+              "title": "Resilience Patterns"
             }
           }
         ],
@@ -204,13 +204,31 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "cf7499baf23c4ffb",
+  "active": "31098f94d1a5de7e",
   "lastOpenFiles": [
-    "Techie Notes/System Design/Fundamentals/Reliability/Disaster Recovery.md",
-    "Techie Notes/System Design/Tackling System Design Interviews.md",
-    "Techie Notes/DSA Quickdraw.md",
+    "Techie Notes/System Design/Fundamentals/Networking/Web Sockets.md",
     "Techie Notes/System Design/Fundamentals/Reliability/Autoscaling.md",
+    "assets/excalidraw/System Design/Fundamentals/Reliability/Circuit Breaker.excalidraw",
+    "Techie Notes/System Design/Fundamentals/Reliability/Resilience Patterns.md",
+    "Techie Notes/System Design/Fundamentals/Practice Questions.md",
+    "assets/excalidraw/System Design/Fundamentals/Reliability/Resilience Basic Flow.excalidraw",
+    "Techie Notes/System Design/Fundamentals/Reliability/SLI-SLO-SLA.md",
+    "Techie Notes/System Design/Fundamentals/Reliability/Scaling.md",
     "Techie Notes/System Design/Fundamentals/Reliability/Reliability Formula Cheat Sheet.md",
+    "Techie Notes/System Design/Fundamentals/Reliability/Observability.md",
+    "Techie Notes/System Design/Fundamentals/Reliability/Multi Region Failover.md",
+    "Techie Notes/System Design/Fundamentals/Networking/SSL Certificates.md",
+    "Techie Notes/System Design/Tackling System Design Interviews.md",
+    "assets/excalidraw/System Design/Fundamentals/Reliability/Multi Region.excalidraw",
+    "Techie Notes/System Design/Fundamentals/Security/Session Managements.md",
+    "Techie Notes/System Design/Fundamentals/Security/Encryption.md",
+    "Techie Notes/System Design/Fundamentals/Security/Auth.md",
+    "Techie Notes/System Design/Fundamentals/Message Queues.md",
+    "Techie Notes/System Design/Fundamentals/Caching.md",
+    "Techie Notes/System Design/Fundamentals/Reliability/Disaster Recovery.md",
+    "assets/excalidraw/System Design/Fundamentals/Reliability/Untitled.md",
+    "assets/excalidraw/System Design/Fundamentals/Reliability",
+    "Techie Notes/DSA Quickdraw.md",
     "Techie Notes/System Design/Fundamentals/System Architectures.md",
     "assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC 1.excalidraw",
     "assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC.excalidraw",
@@ -222,27 +240,9 @@
     "Techie Notes/DSA/Backtracking.md",
     "Pasted image 20261026205309.png",
     "Techie Notes/DSA/Binary Serach.md",
-    "Techie Notes/DSA/Heap.md",
-    "Techie Notes/DSA/Stacks.md",
-    "Techie Notes/DSA/Sliding Window.md",
     "Techie Notes/DSA",
-    "Techie Notes/System Design/Fundamentals/Reliability/Multi Region Failover.md",
-    "Techie Notes/DSA Roadmap - Temporary.md",
-    "Techie Notes/System Design/Fundamentals/Databases/Replication.md",
-    "Techie Notes/System Design/Fundamentals/Databases/Database Partitioning.md",
-    "Techie Notes/System Design/Fundamentals/Databases/Indexes.md",
-    "Techie Notes/System Design/Fundamentals/Databases/Materialised Views.md",
-    "Techie Notes/System Design/Fundamentals/Databases/Database Types.md",
-    "Techie Notes/System Design/Fundamentals/Databases/B-tree vs LSM-tree.md",
-    "Techie Notes/System Design/Fundamentals/Databases/Transactions, Isolation Levels and Concurrency Control.md",
-    "Techie Notes/System Design/Fundamentals/Databases/ACID vs BASE.md",
-    "Techie Notes/System Design/Fundamentals/Databases/Normalisation.md",
     "assets/excalidraw/System Design/Fundamentals/Databases/5NF.excalidraw",
     "assets/excalidraw/System Design/Fundamentals/Databases/1NF.excalidraw",
-    "assets/excalidraw/System Design/Fundamentals/Databases/4NF.excalidraw",
-    "assets/excalidraw/System Design/Fundamentals/Databases/3NF.excalidraw",
-    "assets/excalidraw/System Design/Fundamentals/Databases/2NF.excalidraw",
-    "assets/excalidraw/System Design/Fundamentals/Networking/API.excalidraw",
     "assets/header.jpg",
     "assets/dp.jpg"
   ]

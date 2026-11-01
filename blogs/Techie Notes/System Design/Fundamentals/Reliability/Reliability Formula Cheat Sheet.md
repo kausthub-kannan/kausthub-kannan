@@ -1,39 +1,39 @@
-|Concept|Formula|Notes|
-|---|---|---|
-|**Availability**|`A = Uptime / (Uptime + Downtime)`|Fraction of time the system is operational.|
-|**Availability using MTBF and MTTR**|`A = MTBF / (MTBF + MTTR)`|MTBF = mean time between failures; MTTR = mean time to repair or restore.|
-|**Downtime**|`D = (1 - A) × T`|Expected downtime over period `T`.|
-|**Reliability over time**|`R(t) = e^(-λt)`|Probability of operating without failure during time `t`, assuming a constant failure rate `λ`.|
-|**Failure probability**|`P_f(t) = 1 - R(t)`|Probability of at least one failure during time `t`.|
-|**Mean Time Between Failures (MTBF)**|`MTBF = Total Operating Time / Number of Failures`|Used for repairable systems.|
-|**Mean Time to Repair (MTTR)**|`MTTR = Total Repair Time / Number of Repairs`|Lower MTTR generally improves availability.|
-|**Series system availability**|`A_sys = ∏ A_i`|Every component must work. Example: API → authentication → database.|
-|**Two components in series**|`A_sys = A₁ × A₂`|Both components must be available.|
-|**Parallel redundancy**|`A_sys = 1 - ∏(1 - A_i)`|At least one independent component must work.|
-|**Two identical redundant components**|`A_sys = 1 - (1 - A)²`|Either component can serve requests.|
-|**K-out-of-N redundancy**|`A_sys = Σ[j=k to n] C(n,j) × A^j × (1-A)^(n-j)`|At least `k` of `n` identical, independent components must work.|
-|**Probability all redundant components fail**|`P_f = p^n`|`n` independent components, each with failure probability `p`.|
-|**Downtime at 99% availability**|`D = 0.01 × T`|Approximately 3 days, 15 hours, 36 minutes per year.|
-|**Downtime at 99.9% availability**|`D = 0.001 × T`|Approximately 8 hours, 46 minutes per year.|
-|**Downtime at 99.99% availability**|`D = 0.0001 × T`|Approximately 52 minutes, 34 seconds per year.|
-|**Downtime at 99.999% availability**|`D = 0.00001 × T`|Approximately 5 minutes, 15 seconds per year.|
-|**Required instances**|`N = ceil(R / C_i)`|`R` = required RPS; `C_i` = tested capacity per instance. Always round up.|
-|**Remaining capacity after failures**|`C_remaining = (N - F) × C_i`|`F` = number of failed instances. Assumes surviving instances can handle the load.|
-|**Capacity utilisation**|`U = (R / (N × C_i)) × 100%`|Percentage of installed capacity being used.|
-|**Survive one zone failure**|`N ≥ (R / C_i) × Z / (Z - 1)`|`Z` = number of equally sized zones. Assumes capacity can be redistributed.|
-|**Redundancy overhead**|`((N_total - N_baseline) / N_baseline) × 100%`|Percentage of additional instances provisioned for redundancy.|
-|**Recovery Time Objective (RTO)**|`T_recovery ≤ RTO`|Maximum acceptable time to restore service after a disruption.|
-|**Recovery Point Objective (RPO)**|`T_failure - T_last_recoverable_point ≤ RPO`|Maximum acceptable interval of data loss.|
-|**Total recovery time**|`T_recovery = T_detection + T_decision + T_failover + T_validation`|Estimates the time required to detect, respond, fail over, and validate recovery.|
-|**Replication lag**|`L = T_primary - T_replica`|Measures replication delay using comparable timestamps.|
-|**Success rate**|`(Successful Requests / Total Eligible Requests) × 100%`|Percentage of eligible requests that succeed.|
-|**Error rate**|`(Failed Eligible Requests / Total Eligible Requests) × 100%`|Percentage of eligible requests that fail.|
-|**Error budget**|`E = (1 - S) × Q`|`S` = target success ratio; `Q` = eligible requests during the measurement window.|
-|**Error budget consumption**|`(Errors Observed / Errors Allowed) × 100%`|Measures how much of the error budget has been consumed.|
-|**Latency SLO compliance**|`(Requests Meeting Latency Threshold / Total Eligible Requests) × 100%`|Percentage of requests meeting the latency objective.|
-|**Exponential traffic growth**|`R_n = R₀ × (1 + g)^n`|`R₀` = current traffic; `g` = growth rate per period; `n` = number of periods.|
-|**Campaign peak traffic**|`R_peak = R_baseline × (1 + c)`|`c` = fractional traffic increase during the campaign.|
-|**Minimum availability target**|`A_sys ≥ A_target`|Check that estimated system availability meets the required target.|
+| Concept                                       | Formula                                                                 | Notes                                                                                           |
+| --------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Availability**                              | `A = Uptime / (Uptime + Downtime)`                                      | Fraction of time the system is operational.                                                     |
+| **Availability using MTBF and MTTR**          | `A = MTBF / (MTBF + MTTR)`                                              | MTBF = mean time between failures; MTTR = mean time to repair or restore.                       |
+| **Downtime**                                  | `D = (1 - A) × T`                                                       | Expected downtime over period `T`.                                                              |
+| **Reliability over time**                     | `R(t) = e^(-λt)`                                                        | Probability of operating without failure during time `t`, assuming a constant failure rate `λ`. |
+| **Failure probability**                       | `P_f(t) = 1 - R(t)`                                                     | Probability of at least one failure during time `t`.                                            |
+| **Mean Time Between Failures (MTBF)**         | `MTBF = Total Operating Time / Number of Failures`                      | Used for repairable systems.                                                                    |
+| **Mean Time to Repair (MTTR)**                | `MTTR = Total Repair Time / Number of Repairs`                          | Lower MTTR generally improves availability.                                                     |
+| **Series system availability**                | `A_sys = ∏ A_i`                                                         | Every component must work. Example: API → authentication → database.                            |
+| **Two components in series**                  | `A_sys = A₁ × A₂`                                                       | Both components must be available.                                                              |
+| **Parallel redundancy**                       | `A_sys = 1 - ∏(1 - A_i)`                                                | At least one independent component must work.                                                   |
+| **Two identical redundant components**        | `A_sys = 1 - (1 - A)²`                                                  | Either component can serve requests.                                                            |
+| **K-out-of-N redundancy**                     | `A_sys = Σ[j=k to n] C(n,j) × A^j × (1-A)^(n-j)`                        | At least `k` of `n` identical, independent components must work.                                |
+| **Probability all redundant components fail** | `P_f = p^n`                                                             | `n` independent components, each with failure probability `p`.                                  |
+| **Downtime at 99% availability**              | `D = 0.01 × T`                                                          | Approximately 3 days, 15 hours, 36 minutes per year.                                            |
+| **Downtime at 99.9% availability**            | `D = 0.001 × T`                                                         | Approximately 8 hours, 46 minutes per year.                                                     |
+| **Downtime at 99.99% availability**           | `D = 0.0001 × T`                                                        | Approximately 52 minutes, 34 seconds per year.                                                  |
+| **Downtime at 99.999% availability**          | `D = 0.00001 × T`                                                       | Approximately 5 minutes, 15 seconds per year.                                                   |
+| **Required instances**                        | `N = ceil(R / C_i)`                                                     | `R` = required RPS; `C_i` = tested capacity per instance. Always round up.                      |
+| **Remaining capacity after failures**         | `C_remaining = (N - F) × C_i`                                           | `F` = number of failed instances. Assumes surviving instances can handle the load.              |
+| **Capacity utilisation**                      | `U = (R / (N × C_i)) × 100%`                                            | Percentage of installed capacity being used.                                                    |
+| **Survive one zone failure**                  | `N ≥ (R / C_i) × Z / (Z - 1)`                                           | `Z` = number of equally sized zones. Assumes capacity can be redistributed.                     |
+| **Redundancy overhead**                       | `((N_total - N_baseline) / N_baseline) × 100%`                          | Percentage of additional instances provisioned for redundancy.                                  |
+| **Recovery Time Objective (RTO)**             | `T_recovery ≤ RTO`                                                      | Maximum acceptable time to restore service after a disruption.                                  |
+| **Recovery Point Objective (RPO)**            | `T_failure - T_last_recoverable_point ≤ RPO`                            | Maximum acceptable interval of data loss.                                                       |
+| **Total recovery time**                       | `T_recovery = T_detection + T_decision + T_failover + T_validation`     | Estimates the time required to detect, respond, fail over, and validate recovery.               |
+| **Replication lag**                           | `L = T_primary - T_replica`                                             | Measures replication delay using comparable timestamps.                                         |
+| **Success rate**                              | `(Successful Requests / Total Eligible Requests) × 100%`                | Percentage of eligible requests that succeed.                                                   |
+| **Error rate**                                | `(Failed Eligible Requests / Total Eligible Requests) × 100%`           | Percentage of eligible requests that fail.                                                      |
+| **Error budget**                              | `E = (1 - S) × Q`                                                       | `S` = target success ratio; `Q` = eligible requests during the measurement window.              |
+| **Error budget consumption**                  | `(Errors Observed / Errors Allowed) × 100%`                             | Measures how much of the error budget has been consumed.                                        |
+| **Latency SLO compliance**                    | `(Requests Meeting Latency Threshold / Total Eligible Requests) × 100%` | Percentage of requests meeting the latency objective.                                           |
+| **Exponential traffic growth**                | `R_n = R₀ × (1 + g)^n`                                                  | `R₀` = current traffic; `g` = growth rate per period; `n` = number of periods.                  |
+| **Campaign peak traffic**                     | `R_peak = R_baseline × (1 + c)`                                         | `c` = fractional traffic increase during the campaign.                                          |
+| **Minimum availability target**               | `A_sys ≥ A_target`                                                      | Check that estimated system availability meets the required target.                             |
 
 ## Important Assumptions
 

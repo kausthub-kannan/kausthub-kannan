@@ -11,16 +11,9 @@ Distributed systems fail partially and unpredictably: a dependency gets slow, a 
 |Graceful degradation|Total outage when one feature breaks|Serve a reduced but useful response|
 |Health checks|Routing traffic to broken instances|Detect and remove unhealthy nodes|
 
-```
-Request
-  └─ Timeout           (bound each call)
-      └─ Retry         (recover from transient failures)
-          └─ Circuit breaker   (stop hammering a dead dependency)
-              └─ Bulkhead      (contain the blast radius)
-                  └─ Fallback / graceful degradation   (still give the user something)
-```
+![Resilience Basic Flow](../../../../assets/excalidraw/System Design/Fundamentals/Reliability/Resilience Basic Flow.excalidraw)
 
-## TImeouts
+## Timeouts
 ### Timeouts
 **Every network call needs a timeout.** Without one, a slow dependency makes callers wait indefinitely, threads and connections pile up, and the caller fails too. Many client libraries default to no timeout or a very long one, so set it explicitly.
 
@@ -86,20 +79,7 @@ For latency-sensitive reads, send a second request to another replica if the fir
 A circuit breaker wraps calls to a dependency and **stops calling it when it is clearly failing**. This avoids wasting resources on doomed calls, gives the dependency room to recover, and lets callers fail fast.
 
 ### States
-```
-          failures exceed threshold
-   ┌──────────────────────────────────┐
-   │                                  ▼
-CLOSED                              OPEN
-(normal, calls pass through)        (calls rejected immediately)
-   ▲                                  │
-   │ trial calls succeed              │ after cool-down timeout
-   │                                  ▼
-   └──────────────────────────── HALF-OPEN
-                                  (limited trial calls)
-                                  │
-                                  └─ trial fails -> back to OPEN
-```
+![Circuit Breaker](../../../../assets/excalidraw/System Design/Fundamentals/Reliability/Circuit Breaker.excalidraw)
 
 | State         | Behaviour                                                                                            |
 | ------------- | ---------------------------------------------------------------------------------------------------- |
@@ -225,26 +205,3 @@ Health checks let infrastructure (load balancers, orchestrators, service discove
 - **Connection draining:** keep serving existing connections for a short time while removing the instance from rotation.
 - **Heartbeats and leases:** nodes report in periodically and are considered dead if they stop (used in cluster membership, leader election).
 - **Synthetic monitoring / canaries:** external probes that exercise real user flows end to end.
-
-## All together in action
-```
-incoming request
-   │
-   ├─ rate limiter / load shedder     (back-pressure: reject excess early)
-   │
-   ├─ bulkhead                        (limit concurrent calls to this dependency)
-   │     │
-   │     ├─ circuit breaker           (fail fast if the dependency is known bad)
-   │     │     │
-   │     │     ├─ retry w/ backoff + jitter, under a retry budget
-   │     │     │     │
-   │     │     │     └─ call with timeout / propagated deadline
-   │     │     │
-   │     │     └─ on failure -> fallback
-   │     │
-   │     └─ on rejection -> fallback
-   │
-   └─ graceful degradation            (return the best response possible)
-
-infrastructure: health checks route traffic away from broken instances
-```

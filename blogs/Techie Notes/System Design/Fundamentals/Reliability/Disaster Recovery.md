@@ -16,17 +16,6 @@ Resilience patterns keep a system running through _small_ failures. DR is what y
 |**Failback**|Returning to the original system once it is repaired|
 |**Business Continuity Plan (BCP)**|The broader plan for keeping the _business_ running, of which IT DR is one part|
 
-```
-         disaster strikes
-              │
-  ◄───RPO────►│◄──────────────RTO──────────────►
-  data lost    │   outage: service unavailable    │
-              │                                   ▼
-last good     ▼                              service restored
-recovery  ─────────────────────────────────────────────► time
-point
-```
-
 ## RTO and RPO
 RPO is measured **backwards from the disaster** to the last recoverable copy of the data.
 - **RPO of 24 hours:** a nightly backup is enough, and you may lose up to a day of changes.
@@ -109,11 +98,6 @@ Retention is driven by RPO needs, how long it takes to **notice** corruption (si
 Keep backups in a **separate security domain**: separate credentials, separate account, and permissions that production systems cannot use to delete them.
 
 ### Backup lifecycle
-```
-Schedule -> Capture -> Verify integrity -> Encrypt -> Copy offsite/cross-account
-     -> Retain per policy -> Monitor & alert -> Restore test -> Expire/delete
-```
-
 - **A backup is only proven by a successful restore.** Test restores regularly, including a full recovery into a clean environment.
 - **Automate** scheduling, verification and alerting. Alert on **missed or failed backups**, backup size anomalies (suddenly tiny or huge) and restore-test failures.
 - **Encrypt** backups in transit and at rest, and protect the keys separately. Losing the keys means losing the backups.

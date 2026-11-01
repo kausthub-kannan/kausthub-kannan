@@ -1,23 +1,23 @@
 A **multi-region architecture** runs a system across two or more geographically separate cloud regions (or datacentres) so that it can survive the loss of an entire region, serve users with lower latency, and meet data residency requirements.
 
-This is one of the hardest topics in system design. It touches networking, data consistency, deployment, operations and cost all at once. It builds on the disaster recovery notes (RPO, RTO, backup and replication basics) and the resilience patterns notes (health checks, circuit breakers, graceful degradation), and it is usually the most expensive answer to the question "how available do we need to be?"
+This is one of the hardest topics in system design. It touches networking, data consistency, deployment, operations and cost all at once. It is usually the most expensive answer to the question "how available do we need to be?"
 
 ## Purpose of Multi Region
 
-|Category|Item|Explanation|
-|---|---|---|
-|**Reasons to do it**|Survive a regional outage|Whole-region failures are rare but real (power, network, control-plane or software failures). Multi-AZ does not protect against these.|
-||Strict RTO / RPO or availability targets|If the SLO is higher than a single region’s realistic availability (roughly 99.9 to 99.99 percent), you need more than one region.|
-||Lower latency for global users|Serve users from the nearest region. Speed-of-light limits mean distance matters (Mumbai to London is roughly 110 to 130 ms round trip, to US East 180 to 220 ms).|
-||Data residency and sovereignty|Laws may require data to stay in a country or bloc (GDPR, India’s DPDP Act, sector rules).|
-||Regulatory or contractual requirements|Financial regulators, large customers, or government work may mandate geographic redundancy.|
-||Provider or capacity risk|Reduced dependence on one region’s capacity or a single control plane.|
-||Maintenance and migration flexibility|Drain a region to upgrade, migrate or test.|
-|**Reasons not to (or to delay)**|Complexity multiplies|Data consistency, deployment, debugging, and incident response are all harder.|
-||Cost|Typically 1.5x to 2.5x or more (duplicate infrastructure, cross-region data transfer, extra operations effort).|
-||Most outages are not regional|Bad deployments, configuration errors, dependency failures and software bugs hit every region at once. Multi-region does not fix them, and a poorly managed multi-region setup can increase the risk of those errors.|
-||Failover path is rarely exercised|It often fails when needed.|
-||Multi-AZ may be enough|Many businesses are well served by multi-AZ plus good backups. A well-built multi-AZ design commonly delivers 99.9 to 99.99 percent availability.|
+| Category                         | Item                                     | Explanation                                                                                                                                                                                                           |
+| -------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Reasons to do it**             | Survive a regional outage                | Whole-region failures are rare but real (power, network, control-plane or software failures). Multi-AZ does not protect against these.                                                                                |
+|                                  | Strict RTO / RPO or availability targets | If the SLO is higher than a single region’s realistic availability (roughly 99.9 to 99.99 percent), you need more than one region.                                                                                    |
+|                                  | Lower latency for global users           | Serve users from the nearest region. Speed-of-light limits mean distance matters (Mumbai to London is roughly 110 to 130 ms round trip, to US East 180 to 220 ms).                                                    |
+|                                  | Data residency and sovereignty           | Laws may require data to stay in a country or bloc (GDPR, India’s DPDP Act, sector rules).                                                                                                                            |
+|                                  | Regulatory or contractual requirements   | Financial regulators, large customers, or government work may mandate geographic redundancy.                                                                                                                          |
+|                                  | Provider or capacity risk                | Reduced dependence on one region’s capacity or a single control plane.                                                                                                                                                |
+|                                  | Maintenance and migration flexibility    | Drain a region to upgrade, migrate or test.                                                                                                                                                                           |
+| **Reasons not to (or to delay)** | Complexity multiplies                    | Data consistency, deployment, debugging, and incident response are all harder.                                                                                                                                        |
+|                                  | Cost                                     | Typically 1.5x to 2.5x or more (duplicate infrastructure, cross-region data transfer, extra operations effort).                                                                                                       |
+|                                  | Most outages are not regional            | Bad deployments, configuration errors, dependency failures and software bugs hit every region at once. Multi-region does not fix them, and a poorly managed multi-region setup can increase the risk of those errors. |
+|                                  | Failover path is rarely exercised        | It often fails when needed.                                                                                                                                                                                           |
+|                                  | Multi-AZ may be enough                   | Many businesses are well served by multi-AZ plus good backups. A well-built multi-AZ design commonly delivers 99.9 to 99.99 percent availability.                                                                     |
 
 ## Region, Zone and failure domain basics
 |Term|Meaning|Typical failure it contains|
@@ -33,37 +33,16 @@ This is one of the hardest topics in system design. It touches networking, data 
 - **Regions are not always as independent as they appear** (shared backbone networks, shared software versions, shared deployment pipelines). Software-level correlated failures are common.
 
 ## Architecture Patterns
+
+![Architecture Patterns](../../../../assets/excalidraw/System Design/Fundamental/Reliability/Multi Region.excalidraw)
+
 ### Active-passive (primary / standby)
-
-```
-             ┌────────────── Global traffic manager (DNS / GLB) ──────────────┐
-             │                                                                │
-        100% traffic                                                   0% traffic (standby)
-             ▼                                                                ▼
-   ┌─────────────────┐        async replication         ┌─────────────────┐
-   │  Region A       │ ───────────────────────────────► │  Region B       │
-   │  (primary)      │                                  │  (standby)      │
-   │  App + DB (RW)  │                                  │  App + DB (RO)  │
-   └─────────────────┘                                  └─────────────────┘
-```
-
 - All writes go to the primary. The standby receives replicated data and is promoted on failover.
 - **Pros:** simpler consistency (a single writer), easier to reason about, lower cost than active-active.
 - **Cons:** standby capacity may sit idle (or be unproven), failover takes time, async replication risks data loss (RPO above zero), and the standby can quietly rot if never exercised.
 - **Variants:** _pilot light_ (compute mostly off), _warm standby_ (scaled-down), _hot standby_ (full size), and _active-passive with read-local_ (the standby serves reads only, which exercises it and reduces latency, but reads may be stale).
 
 ### Active-active (all regions serve traffic)
-
-```
-        Users ──► Global traffic manager (latency / geo routing) ◄── Users
-                         │                              │
-                         ▼                              ▼
-              ┌─────────────────┐   bi-directional   ┌─────────────────┐
-              │  Region A       │ ◄────────────────► │  Region B       │
-              │  App + DB (RW)  │   replication      │  App + DB (RW)  │
-              └─────────────────┘                    └─────────────────┘
-```
-
 - Every region accepts traffic, and often writes. If one fails, the others absorb its load.
 - **Pros:** best availability and latency, no cold standby, failover is mostly "stop routing to the bad region", and the capacity is in constant use and constantly proven.
 - **Cons:** the data consistency problem is hard (multi-writer conflicts), higher cost and operational complexity, and each region must be able to **absorb the failed region's load** (so each runs below about 50 to 60 percent capacity with two regions, or you accept degradation).
@@ -328,24 +307,3 @@ Regulators in finance, healthcare and government often require documented DR, te
 | **Secrets and keys**           | Secrets Manager replication, KMS multi-Region keys                                                | Secret Manager replication, Cloud KMS                                                       | Key Vault replication and paired regions      |
 | **IaC and fleet management**   | CloudFormation StackSets, Terraform                                                               | Terraform, Config Controller                                                                | ARM and Bicep, Terraform                      |
 | **Failover orchestration**     | Application Recovery Controller (readiness checks, routing controls)                              | Traffic Director, custom automation                                                         | Azure Site Recovery plans                     |
-
-
-## Flow
-```
-1. What are the business RTO / RPO / availability targets (per tier)?
-        │
-        ├─ Hours / hours, cost-sensitive  ──►  Cross-region backups + IaC (backup & restore)
-        │
-        ├─ ~1 hour / minutes              ──►  Pilot light or warm standby, async replication
-        │
-        ├─ Minutes / seconds              ──►  Hot standby, managed global DB, automated failover
-        │
-        └─ Seconds / ~zero, global users  ──►  Active-active
-                 │
-                 ├─ Data partitionable by user/tenant/geo?  ──► Home-region active-active
-                 ├─ Need strong global consistency?          ──► Globally consistent DB (Spanner, CockroachDB)
-                 └─ Can tolerate eventual consistency?       ──► Multi-writer + conflict resolution (CRDT/LWW/merge)
-
-2. Do residency rules restrict where data may go?  ──► Constrain region pairs by jurisdiction.
-3. Do we have the ops maturity to test and run it? ──► If not, pick the simpler option and mature first.
-```
