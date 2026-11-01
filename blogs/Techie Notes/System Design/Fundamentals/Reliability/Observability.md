@@ -100,6 +100,7 @@ A trace follows **one request as it travels through many services**, showing the
 |**Events**|Timestamped annotations within a span (such as exceptions)|
 |**Links**|References between spans that aren't parent/child (for example a batch job processing many messages)|
 |**Baggage**|Key-value data propagated across services (use sparingly, it is sent on every call)|
+
 ### Context propagation
 For a trace to span services, the trace context must be passed along with every call.
 - **HTTP/gRPC:** headers, most commonly the **W3C Trace Context** standard:

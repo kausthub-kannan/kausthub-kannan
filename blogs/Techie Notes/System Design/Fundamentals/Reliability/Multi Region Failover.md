@@ -34,7 +34,7 @@ This is one of the hardest topics in system design. It touches networking, data 
 
 ## Architecture Patterns
 
-![Architecture Patterns](../../../../assets/excalidraw/System Design/Fundamental/Reliability/Multi Region.excalidraw)
+![Architecture Patterns](../../../../assets/excalidraw/System Design/Fundamentals/Reliability/Multi Region.excalidraw)
 
 ### Active-passive (primary / standby)
 - All writes go to the primary. The standby receives replicated data and is promoted on failover.

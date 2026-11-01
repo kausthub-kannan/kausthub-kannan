@@ -88,14 +88,14 @@ A circuit breaker wraps calls to a dependency and **stops calling it when it is 
 | **Half-open** | After a cool-down, a few trial requests are allowed. Success closes the circuit, failure reopens it. |
 
 ### Key configuration
-|Setting|Meaning|Typical thinking|
-|---|---|---|
-|Failure rate threshold|Percent of failed calls that trips the breaker|50 percent over a window is common|
-|Minimum call volume|Don't evaluate until at least N calls in the window|Avoids tripping on 1 of 2 failed calls|
-|Sliding window|Count-based (last N calls) or time-based (last N seconds)|Time-based suits variable traffic|
-|Slow-call threshold|Treat calls slower than X as failures|Catches degradation, not just errors|
-|Open-state wait time|How long to stay open before half-open|Seconds to tens of seconds|
-|Half-open permitted calls|Number of trial calls|A small number, such as 3 to 10|
+| Setting                   | Meaning                                                   | Typical thinking                       |
+| ------------------------- | --------------------------------------------------------- | -------------------------------------- |
+| Failure rate threshold    | Percent of failed calls that trips the breaker            | 50 percent over a window is common     |
+| Minimum call volume       | Don't evaluate until at least N calls in the window       | Avoids tripping on 1 of 2 failed calls |
+| Sliding window            | Count-based (last N calls) or time-based (last N seconds) | Time-based suits variable traffic      |
+| Slow-call threshold       | Treat calls slower than X as failures                     | Catches degradation, not just errors   |
+| Open-state wait time      | How long to stay open before half-open                    | Seconds to tens of seconds             |
+| Half-open permitted calls | Number of trial calls                                     | A small number, such as 3 to 10        |
 
 ## Bulkheads
 Named after ship bulkheads: watertight compartments so one breach doesn't sink the whole vessel. In software, **isolate resources so a problem in one area can't exhaust everything**.

@@ -16,6 +16,14 @@
 
   --md-code-bg-color: #0b1440;
   --md-code-fg-color: #ffffff;
+
+  /* Frosted-glass recipe shared by the top bar and the content panels
+   * (tables and fenced code blocks) below: the site navy at 0.6
+   * alpha, a hairline white border and a backdrop blur. Kept as
+   * variables so every glass surface drifts together. */
+  --glass-tint: rgba(15, 14, 14, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-blur: blur(14px) saturate(160%);
 }
 
 /* ------------------------------------------------------------------ *
@@ -60,11 +68,11 @@ body {
  * for extra specificity, so it also overrides the theme's scrolled
  * drop shadow (.md-header--shadow) and keeps the bar flat glass. */
 [data-md-color-scheme="slate"] .md-header {
-  background: rgba(15, 14, 14, 0.6);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  background: var(--glass-tint);
+  border-bottom: 1px solid var(--glass-border);
   box-shadow: none;
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
 }
 
 /* Topbar logo as an oversized circular avatar.
@@ -117,4 +125,58 @@ body {
   margin: 0 auto;
   max-width: 100%;
   height: auto;
+}
+
+/* ------------------------------------------------------------------ *
+ * Content panels + inline code chips.                                 *
+ * Fenced code blocks and tables use the top bar's frosted-glass       *
+ * recipe (shared --glass-* vars: navy at 0.6 alpha + backdrop blur +  *
+ * hairline white border). Inline code gets its own transparent chip.  *
+ * Scoped to the slate scheme and .md-typeset with matching spec so    *
+ * Material's own backgrounds (var(--md-code-bg-color) on `code`,      *
+ * var(--md-default-bg-color) on tables) are overridden everywhere.    *
+ * ------------------------------------------------------------------ */
+
+/* Inline code — markdown highlights in single backticks. Material's
+ * opaque navy fill is dropped for a see-through chip: a hairline white
+ * outline hugging the glyphs. The sliver of vertical padding keeps the
+ * border from clipping ascenders/descenders, and the theme's
+ * `box-decoration-break: clone` still borders wrapped chips per line. */
+[data-md-color-scheme="slate"] .md-typeset :not(pre) > code {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.05em 0.2941176471em;
+}
+
+/* Fenced code blocks. Material paints the navy fill on the inner <code>
+ * (not <pre>), so the glass tint + border + blur go there and get
+ * rounded the same 8px as the panels below. Behind code the blur just
+ * softens whatever little detail passes under the panel (it is degrade-
+ * graceful: without blur the 0.6-alpha tint still reads as glass). */
+[data-md-color-scheme="slate"] .md-typeset pre > code {
+  background-color: var(--glass-tint);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+/* Tables. Material fills the table with the opaque page navy and a
+ * near-black border; swap both for the glass look. `overflow: hidden`
+ * + the larger radius clip the row fills into rounded corners. */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  background-color: var(--glass-tint);
+  border: 0.05rem solid var(--glass-border);
+  border-radius: 8px;
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+/* Row hover: Material's inset box-shadow repaints an opaque navy hairline
+ * that would glow through the translucent panel — use a quiet white
+ * lift instead. */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
 }
