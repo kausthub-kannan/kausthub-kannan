@@ -1,0 +1,20 @@
+- [x] URL shortener
+- [ ] Pastebin
+- [ ] Rate limiter
+- [ ] Key-value store
+- [ ] Unique ID generator
+- [ ] Core Patterns
+- [ ] News feed / Twitter
+- [ ] Chat app (WhatsApp)
+- [ ] Notification system
+- [ ] Web crawler
+- [ ] Typeahead/autocomplete
+- [ ] Distributed cache
+- [ ] Advanced
+- [ ] YouTube
+- [ ] Netflix
+- [ ] Uber
+- [ ] Cloud Storage
+- [ ] Ticket booking
+- [ ] Payment System
+- [ ] Search Engine

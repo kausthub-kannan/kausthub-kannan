@@ -11,7 +11,7 @@ Concepts covered in MLE Notes are listed below:
 9. [Hallucination Mitigation](<../../AWS ML Engineer/Generative AI Model Fundamentals.md>)
 10. [Streaming, Pricing & Provisioned Throughput](<../../AWS ML Engineer/Generative AI Model Fundamentals.md>)
 11. [Cost Optimisation](<../../AWS ML Engineer/ML Best Practices.md>)
-12. [QLoRA / GPU memory limits](<../../AWS ML Engineer/Generative AI Model Fundamentals.md>), 
+12. [QLoRA / GPU memory limits](<../../AWS ML Engineer/Generative AI Model Fundamentals.md>)
 13. [Training Compiler & Instance right-sizing](<../../AWS ML Engineer/ML Best Practices.md>) 
 
 TODO:

@@ -26,7 +26,7 @@ Tools are useful to perform certain activity based on LLM decision taken such as
 *Understanding them all together*
 Graphs accept inputs — including messages managed via reducer functions — as States. Nodes are functions that take these States and perform actions, with Chat Models, Tools, and other components as part of their logic. Edges connect nodes and handle routing: rule-based or conditional decision-making that determines the next step, including whether to invoke a tool or not
 
-# Agent Memory
+## Agent Memory
 
 Memory is useful to retain the input or output from previous execution of the graph. 
 LangGraph does this with *checkpointers* and *threads*. The state of every super-state can be saved in memory as a **checkpoint** identified with a *checkpoint id*. The information of an end-to-end invoke (all the super-states) is saved as a **thread** identified with a *thread id*. When a new invocation is performed the previous invoke data can be passed using the thread id.
@@ -38,7 +38,7 @@ Threads and checkpoints come under *Short-term memory*. But when memory needs to
 **Memory handling**:
 With increased number of invokes and runs, memory size increases and becomes not scale-able to use all of it. Both memories require selective consideration of required data. This is done using *filtering* and *trimming*. For filtering simple techniques such as summarization, semantic search and others. Trimming is token based approach of handling data. These approaches can be selected intuitively based on use cases.
 
-# HITL and ReAct
+## HITL and ReAct
 
 **ReAct**:
 It is a pattern where the output of a model or tool is fed back into the model as input — for example, the output of a tool node is returned to the calling node for further reasoning. **Re**ason (interpret the output and decide the next step) + **Act** (execute and observe the result). This pattern is particularly useful when the same or similar tools are called repeatedly, such as tools that interact with a database.

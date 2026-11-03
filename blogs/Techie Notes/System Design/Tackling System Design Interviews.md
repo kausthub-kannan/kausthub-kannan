@@ -7,7 +7,7 @@ The first step is to understand what the requirements are. Often in Product/Solu
    These are the core features of the solution which "makes" the solution. Consider Youtube as an example. Showing thumbnails, streaming audio-video, Playlisting, likes etc are the functional requirements. Often clients are much clearer on this but this requires continuous prompting from the engineer to ask further in depth question such as: Should the playlists be shareable? Should the thumbnails have multiple options and be customisable even after upload? A well defined FRs form a solid based avoiding re-iterations of designs. At the end of this sub-step we know what is in-scope and what is out of scope.
    
 2. Non-functional requirement:
-   NFRs form the soul of system design. When designing solutions for a smaller audience; let's say 100 users or as a proof-of-concept; you are least bothered about scalability.  But let's say you see 10000 users hitting your application for seconds, that's a nightmare. Hence the need to ask for NFRs are the most imporant in establishing a design. NFPs are many in number so it's quite diffcult to start out of no where, hence the below template can be used to ask questions to the client in the process:
+   NFRs form the soul of system design. When designing solutions for a smaller audience; let's say 100 users or as a proof-of-concept; you are least bothered about scalability.  But let's say you see 10000 users hitting your application for seconds, that's a nightmare. Hence the need to ask for NFRs are the most important in establishing a design. NFPs are many in number so it's quite difficult to start out of no where, hence the below template can be used to ask questions to the client in the process:
    - Scale - The number of users/request per unit time
    - Read vs Write - Do users read a lot of data on larger basis via your application OR do they write a lot?
    - Availability vs Consistency - What is worse, stale data or higher down time?
@@ -83,3 +83,106 @@ Pattern followed for this is:
 ```
 ### Wrapping Up
 Finally summarise the entire design. Establish the bottlenecks and improvements. Dive surface level into monitoring, observeability , and failure scenarios.
+
+### EXAMPLE
+Design a URL shortener where users paste a long URL and receive a unique short URL. Visiting the short URL redirects to the original (primary) URL.
+#### Requirement Analysis
+**FRs:**
+1. Every long URL submitted produces a unique short URL.
+2. Every read of a short URL redirects to the original URL.
+3. Analytics (secondary, but part of the scope).
+
+**Clarifying questions**
+
+| Question                            | Decision                                                                                                                                                                                                               |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Do we need authentication?          | No. It is overkill for this use case. If the client insists, it can be handled at the API gateway.                                                                                                                     |
+| Do we need analytics?               | Yes, but not as a core requirement. It helps us understand user scale and demographics and predict scaling needs. For the current scope we track a small set of basic metrics (e.g. click count, timestamp, referrer). |
+| How many links are created per day? | Assume 5M-10M requests per day, with every request treated as a fresh user since there is no auth or session management.                                                                                               |
+
+**NFRs:**
+- **Write throughput:** 1K-6k writes/sec (see the note below on this number).
+- **Read throughput:** about 100x writes, so roughly 100K-600K reads/sec.
+- **Read-heavy system:** short links are created to be shared, so reads dominate.
+- **Low redirect latency:** the redirect is the hot path.
+#### High Level Design (HLD)
+**Components:** API Gateway → Application Server → Cache → Database
+Given the read RPS, a cache sits in front of the database to reduce DB hits.
+
+#### API 1: Generate short URL
+```
+POST /api/v1/generate
+Auth: Public
+
+Request body (JSON):
+{
+  "url": "<original URL to be shortened>"
+}
+
+Response (JSON), Status: 201 Created
+{
+  "responseId": "<unique id for the response>",
+  "shortUrl": "<unique generated short URL>"
+}
+```
+#### API 2: Redirect to original URL
+```
+GET /{shortUrl}
+Auth: Public
+
+Param:
+  shortUrl: the short URL generated earlier
+
+Response:
+  Status: 302 Found
+  Header: Location: <original URL>
+```
+> We use **302 over 301** because analytics is enabled. A 301 is cached by browsers, so repeat clicks would never reach our server.
+  
+**Flow:**
+**Write path**
+1. The user calls `/api/v1/generate` with the URL to shorten.
+2. The server generates a unique ID and stores it in the database along with the original URL.
+3. The server returns the short URL.
+
+**Read path**
+1. The user hits the short URL.
+2. The server checks the cache first.
+3. On a cache miss, it looks up the database (and populates the cache).
+4. The server returns a 302 redirect to the original URL.
+
+#### Deep Dive
+**Short URL Generation**
+Quick correction on the name: it’s **Base62**, not 62-bit. It means 62 _symbols_ (`0-9`, `a-z`, `A-Z`), so each character carries log₂(62) ≈ 5.95 bits. At 500M users, 6-7 length would be enough. We take unique ID and generate the code (short url).
+
+We get the ID from Range allocation (Redis) where each app server leases a block (e.g. 1M IDs) and hands them out locally. Coordination happens once per million writes, not per write. 
+
+**Database**
+SQL based approach could be taken with sharding in picture. SQL would be much easier to be integrated given that our data is structured. A single table is enough to meet the requirements of below schema:
+```
+urls
+-----
+short_code   PK (shard key)
+long_url
+created_at
+expires_at   (nullable)
+```
+
+**Sharding**
+Storage is the driver: ~90-450 TB over 5 years does not fit on one node (see the earlier estimate). Throughput and storage forces the need for sharding. 
+
+1. How do we shard?
+   To preserve high carnality we take short-code/short-url. 
+
+2. Partitioning strategy?
+   Hashing would be right approach but on `mod N` might cause problem when we auto-scale servers (number of servers/nodes change) or a server fails. This forces keys to be distributed causing misses. Hence Consistent hashing would be better. 
+
+**Analytics Pipeline**
+This is the last functional requirement encountered at the beginning. For analytics pipeline the key aspect is the asynchronous nature. When a click or search of new URL is done we do not want the user to wait due latency caused by processing analytics for the click. Hence we would require a queue. Assuming we take Kafka, we push stats data such as click timestamp, number of click and others to the Kafka queue. Later via a consumer we write it to data house (like ClickHouse) in the background. Via the stats API we obtain the analytics. 
+
+In the user click flow all what happens is a single push to Kafka, that's it; immediately user gets the redirection with no wait time for the analytics to be processed. In the background we have the consumer taking care of data push to data house.
+
+Further deep dive could be done upon:
+1. Cleaning up after URL has expired (via background cleaners and read time checks)
+2. Security when it comes to the short-code generation
+3. Stopping abuse via rate-limiting the API

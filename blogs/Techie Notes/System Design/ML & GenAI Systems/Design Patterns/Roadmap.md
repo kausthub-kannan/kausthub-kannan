@@ -1,8 +1,0 @@
-- [ ] Retrieval using ANN indexes such as HNSW and IVF
-- [ ] Hybrid search: BM25 and embeddings
-- [ ] Learning-to-rank and ranking evaluation
-- [ ] Precision-recall trade-offs and imbalanced datasets
-- [ ] Position bias and feedback loops
-- [ ] Counterfactual bias in logged data
-- [ ] Shadow and canary deployments
-- [ ] Pipeline orchestration, lineage, versioning and reproducibility
