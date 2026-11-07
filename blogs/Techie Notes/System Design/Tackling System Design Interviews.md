@@ -85,6 +85,7 @@ Pattern followed for this is:
 Finally summarise the entire design. Establish the bottlenecks and improvements. Dive surface level into monitoring, observeability , and failure scenarios.
 
 ### EXAMPLE
+![URL Shortner](../../assets/excalidraw/System Design/URL Shortner.excalidraw)
 Design a URL shortener where users paste a long URL and receive a unique short URL. Visiting the short URL redirects to the original (primary) URL.
 #### Requirement Analysis
 **FRs:**

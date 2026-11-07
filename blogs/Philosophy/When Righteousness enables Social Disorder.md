@@ -10,7 +10,7 @@ These are as follows:
 2. Arjuna killed Karna when the latter was incapacitated, attempting to free his chariot wheel.
 3. Shikhandin was placed before Bhishma, knowing full well that Bhishma would not fight Shikhandin.
 4. Satyaki killed Bhurishravas when the latter had withdrawn from the fight.
-5. Duryodhana was killed by Bhima through a blow below the waist, violating the conventions of gada-yuddha.
+5. Duryodhana was killed by Bhima through a blow below the waist, violating the conventions of gada yuddha.
 
 Kripa was present when Ashwatthama raised these objections. The conversation takes place when Ashwatthama, consumed by rage following Duryodhana’s defeat, is contemplating the destruction of the Pandava camp. He eventually carries out the night massacre, killing the Upapandavas and other sleeping warriors.
 
@@ -39,3 +39,5 @@ One important question remains: how was Krishna able to decide which action was 
 I believe Krishna provides a compelling justification by recalling these past incidents. He demonstrates how, on previous occasions, the invocation of dharma, in the form of loyalty and institutional obligations, allowed adharma to flourish. He brings these incidents back to Arjuna’s attention so that he can understand why blindly adhering to the conventions of warfare in the present circumstances could lead to a similar outcome.
 
 This leads us back to the start of this blog. The subtle nature of dharma is difficult to grasp, and if one prioritises the wrong aspect of it, social disorder is allowed to flourish. The same act that was righteous in one situation can destroy the stability of the social cycle in another. This is truly relevant today. A bird’s-eye view of certain decisions made by those in positions of power may sound righteous on paper, but in practice it leads to outcomes that are not acceptable.
+
+`DATE: 05-11-2026 | Wednesday`

@@ -1,20 +1,13 @@
-- [x] URL shortener
-- [ ] Pastebin
-- [ ] Rate limiter
-- [ ] Key-value store
-- [ ] Unique ID generator
-- [ ] Core Patterns
-- [ ] News feed / Twitter
-- [ ] Chat app (WhatsApp)
-- [ ] Notification system
-- [ ] Web crawler
-- [ ] Typeahead/autocomplete
-- [ ] Distributed cache
-- [ ] Advanced
-- [ ] YouTube
-- [ ] Netflix
-- [ ] Uber
-- [ ] Cloud Storage
-- [ ] Ticket booking
-- [ ] Payment System
-- [ ] Search Engine
+- [x] [URL shortener](https://www.youtube.com/watch?v=iUU4O1sWtJA&list=PL5q3E8eRUieWtYLmRU3z94-vGRcwKr9tM&index=4)
+- [x] [Pastebin](https://youtu.be/4qO8tO_Y_nM)
+- [ ] [Rate limiter](https://youtu.be/MIJFyUPG4Z4?list=PL5q3E8eRUieWtYLmRU3z94-vGRcwKr9tM)
+- [ ] [Twitter](https://youtu.be/MIJFyUPG4Z4?list=PL5q3E8eRUieWtYLmRU3z94-vGRcwKr9tM)
+- [ ] [WhatsApp](https://youtu.be/cr6p0n0N-VA?list=PL5q3E8eRUieWtYLmRU3z94-vGRcwKr9tM)
+- [x] [Notification system](https://youtu.be/e8cX9pQdu7Y)
+- [ ] [Web crawler](https://youtu.be/krsuaUp__pM)
+- [ ] [YouTube](https://youtu.be/IUrQ5_g3XKs)
+- [ ] [Netflix](https://youtu.be/-JtjQ-OA7XE)
+- [ ] [Uber](https://youtu.be/lsKU38RKQSo?list=PL5q3E8eRUieWtYLmRU3z94-vGRcwKr9tM)
+- [ ] [DropBox](https://youtu.be/_UZ1ngy-kOI?list=PL5q3E8eRUieWtYLmRU3z94-vGRcwKr9tM)
+- [ ] [Ticket booking](https://youtu.be/fhdPyoO6aXI?list=PL5q3E8eRUieWtYLmRU3z94-vGRcwKr9tM)
+- [ ] [Payment System](https://youtu.be/fqySz1Me2pI)

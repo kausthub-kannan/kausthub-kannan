@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Philosophy/When Righteousness enables Social Disorder.md",
+                "file": "Vedanta Deepam/index.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "When Righteousness enables Social Disorder"
+              "title": "index"
             }
           },
           {
@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Techie Notes/System Design/Tackling System Design Interviews.md",
+                "file": "Techie Notes/System Design/Fundamentals/Questions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tackling System Design Interviews"
+              "title": "Questions"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -203,18 +204,26 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "189f92864f3f1ae0",
+  "active": "31098f94d1a5de7e",
   "lastOpenFiles": [
-    "Techie Notes/System Design/Fundamentals/Databases/Sharding.md",
-    "Philosophy/When Righteousness enables Social Disorder.md",
-    "Philosophy",
     "Techie Notes/System Design/Tackling System Design Interviews.md",
+    "Vedanta Deepam/index.md",
+    "Techie Notes/System Design/Fundamentals/Networking/SSL Certificates.md",
+    "assets/excalidraw/System Design/URL Shortner.excalidraw",
+    "Techie Notes/System Design/Fundamentals/Questions.md",
+    "Techie Notes/System Design/ML & GenAI Systems/Core Concepts.md",
+    "Techie Notes/System Design/Backend Systems/Design Patterns/CQRS.md",
+    "Techie Notes/System Design/Backend Systems/Design Patterns/Outbox Pattern.md",
+    "Techie Notes/System Design/Backend Systems/Design Patterns/Saga Pattern.md",
+    "Philosophy/When Righteousness enables Social Disorder.md",
+    "Vedanta Deepam/Antaryami Brahmana and the Pervasiveness of Brahman.md",
+    "Vedanta Deepam",
+    "Techie Notes/System Design/Fundamentals/Databases/Sharding.md",
+    "Philosophy",
     "Techie Notes/System Design/ML & GenAI Systems/LLM Systems.md",
     "Techie Notes/System Design/Fundamentals/Databases/Database Partitioning.md",
-    "Techie Notes/System Design/Fundamentals/Questions.md",
     "Techie Notes/System Design/Backend Systems/Design Patterns/Roadmap.md",
     "Techie Notes/System Design/ML & GenAI Systems/Fundamentals.md",
-    "Techie Notes/System Design/ML & GenAI Systems/Core Concepts.md",
     "Techie Notes/System Design/ML & GenAI Systems/Design Patterns/Roadmap.md",
     "Techie Notes/System Design/Fundamentals/Databases/Replication.md",
     "Techie Notes/System Design/Fundamentals/Networking/Web Sockets.md",
@@ -227,21 +236,13 @@
     "Techie Notes/System Design/Fundamentals/Reliability/Resilience Patterns.md",
     "Techie Notes/System Design/Fundamentals/Reliability/Autoscaling.md",
     "assets/excalidraw/System Design/Fundamentals/Reliability/Circuit Breaker.excalidraw",
-    "Techie Notes/System Design/Fundamentals/Practice Questions.md",
     "assets/excalidraw/System Design/Fundamentals/Reliability/Resilience Basic Flow.excalidraw",
-    "Techie Notes/System Design/Fundamentals/Reliability/SLI-SLO-SLA.md",
-    "Techie Notes/System Design/Fundamentals/Reliability/Scaling.md",
-    "Techie Notes/System Design/Fundamentals/Reliability/Reliability Formula Cheat Sheet.md",
-    "Techie Notes/System Design/Fundamentals/Reliability/Multi Region Failover.md",
-    "Techie Notes/System Design/Fundamentals/Networking/SSL Certificates.md",
     "assets/excalidraw/System Design/Fundamentals/Reliability/Multi Region.excalidraw",
     "assets/excalidraw/System Design/Fundamentals/Reliability",
     "assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC 1.excalidraw",
     "assets/excalidraw/System Design/Fundamentals/Databases/Log Based CDC.excalidraw",
     "Asymmetric Encryption.excalidraw",
     "Pasted image 20261026205309.png",
-    "Techie Notes/DSA",
-    "assets/excalidraw/System Design/Fundamentals/Databases/5NF.excalidraw",
     "assets/header.jpg",
     "assets/dp.jpg"
   ]
